@@ -1,0 +1,75 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+
+.nav-links {
+  width: 40%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  list-style: none;
+}
+
+
+nav {
+ 
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: rgb(75, 74, 82);
+  min-height: 10vh;
+  border: 1px solid green;
+}
+
+.shop {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: row;
+  background-color: rgb(49, 60, 77);
+  flex-wrap: wrap;
+  border: 1px solid red;
+}
+
+.gameDiv {
+  border: 1px solid green;
+  height: 125px;
+  width: 120px;
+  margin: 20px;
+}
+
+.game-title {
+  max-height:10px;
+  padding: 0px;
+  
+}
+.thumbnail {
+  max-width: 125px;
+  max-height: 100px;
+}
+
+/* .imag-container {
+  display: flex;
+  align-items: center;
+  max-width: 20vh;
+  max-height: 20vh;
+  border: 1px solid red;
+  
+} */
+
+.img, .img_add {
+  max-width: 40vh;
+  max-height: 40vh;
+  padding: 10px;
+}
