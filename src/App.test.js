@@ -4,10 +4,10 @@ import { act } from 'react-dom/test-utils';
 import { BrowserRouter } from 'react-router-dom'
 import userEvent from "@testing-library/user-event";
 import mockFetch from './mocks/mockFetch'
-import App from './App';
-import Nav from './Nav';
-import Shop from './Shop';
-import { ItemsList } from './Shop';
+import App from './components/App';
+import Nav from './components/Nav';
+import Deals from './components/Deals';
+import { ItemsList } from './components/Deals';
 
 
 // test('renders learn react link', () => {
@@ -41,9 +41,10 @@ describe("Nav component", () => {
     const listItems = screen.getAllByRole("listitem")
 
     expect(navHeader.textContent).toMatch(/nav/i);
-    expect(listItems[0].textContent).toMatch(/about/i);
-    expect(listItems[1].textContent).toMatch(/shop/i);
-    // expect(shop.textContent).toMatch(/shop/i);
+    expect(listItems[0].textContent).toMatch(/home/i);
+    expect(listItems[1].textContent).toMatch(/deals/i);
+    expect(listItems[2].textContent).toMatch(/about/i);
+    expect(listItems[3].textContent).toMatch(/cart/i);
   });
   
 });
@@ -52,12 +53,12 @@ describe("Shop component", () => {
   
 
     it("renders correct link", () => {
-      const { container } = render(<Shop />)
+      const { container } = render(<Deals />)
       expect(container).toMatchSnapshot();
     });
 
     it("fetch was called", async () => {
-        render(<Shop />);
+        render(<Deals />);
         
         // const {getByRole} = render(<Shop />)
         // expect(getByRole("heading").textContent).toMatch(/header test/i)
@@ -85,7 +86,7 @@ describe("Shop component", () => {
     // })
 
     test('should get nationalities for a name', async() => {
-      render(<BrowserRouter><Shop /></BrowserRouter>);
+      render(<BrowserRouter><Deals /></BrowserRouter>);
     
       //simulate filling up the textbox
       // const personNameInput = screen.getByRole('textbox');
@@ -108,8 +109,8 @@ describe("Shop component", () => {
        expect(screen.getAllByText('2 Sid Meiers Civilization VI')[1]).toBeVisible();
       //  expect(screen.getByText('IE - 4.21%')).toBeVisible();
       
-       const flagImages = screen.getAllByRole('img');
-       expect(flagImages).toHaveLength(4);
+       const thumbnails = screen.getAllByRole('img');
+       expect(thumbnails).toHaveLength(4);
       //  expect(flagImages[0]).toHaveAccessibleName('US flag');
       //  expect(flagImages[1]).toHaveAccessibleName('IM flag');
       //  expect(flagImages[2]).toHaveAccessibleName('IE flag');

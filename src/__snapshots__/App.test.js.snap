@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Shop component renders correct link 1`] = `
+<div>
+  <div
+    class="shop"
+  >
+    <div
+      class="message"
+    />
+  </div>
+</div>
+`;

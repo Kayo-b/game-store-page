@@ -41,6 +41,19 @@ nav {
   flex-wrap: wrap;
   border: 1px solid red;
 }
+.game-title {
+  margin-top: 0px;
+}
+.info {
+  font-size: x-small;
+  margin: 0px;
+  padding: 0px;
+}
+.store-link {
+  font-size: x-small;
+  margin: 0px;
+  padding: 0px;
+}
 
 .gameDiv {
   border: 1px solid green;
