@@ -27,7 +27,6 @@ const Shop = ({setCart, shopCart}) => {
 
     useEffect(() => {
       async function handleSubmit(){
-
           await fetchItems();
         }
         handleSubmit()
@@ -49,7 +48,8 @@ const Shop = ({setCart, shopCart}) => {
 
     function AddToCart(item) {
         console.log(item.title + ' was added')
-        let dealObj = {title: item.title,
+        let dealObj = {
+                title: item.title,
                 salePrice: item.salePrice,
                 savings: item.savings,
                 normalPrice: item.normalPrice}
@@ -60,7 +60,7 @@ const Shop = ({setCart, shopCart}) => {
   return (
     <div className="shop">
         <div className="message">{message}</div>
-        {console.log(items)}
+        
         {items?.map(item => { 
            let gameName = `${item.metacriticLink}`
           

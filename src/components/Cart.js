@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 
-const Cart = ({shopCart}) => {
+const Cart = ({shopCart, setCart, cartDisplay}) => {
     const [cartContent, setCartContent] = useState('')
     const [subtotal, setSubtotal] = useState(0)
     
@@ -12,8 +12,8 @@ const Cart = ({shopCart}) => {
     //const {title, price, saving} = location.state;
  
     useEffect(() => {
-        setCartContent(shopCart)
-    }, [])
+        console.log("useEffect")
+    },)
     
     function calculateSubtotal() {
         let count = 0;
@@ -30,14 +30,22 @@ const Cart = ({shopCart}) => {
         }
         return returningValues;
     }
-    console.log(shopCart)
+   
     // console.log(title)
     // setcartContent(title, price, saving)
+
+    function RemoveFromCard(item) {
+        
+        let newShopCart = shopCart
+        newShopCart.splice(shopCart.indexOf(item), 1)
+        setCart(newShopCart)
+        setCartContent("test")
+    }
     return(
-        <div>
+        <div className='shopCart' style={{display: cartDisplay}}>
             <h3>Shopping Cart</h3>
             <p>This is a page under construction</p>
-            <ul>{shopCart.map(item => <li>{item.title}</li>)}</ul>
+            <ul>{shopCart.map(item => <li>{item.title}<button onClick={() => RemoveFromCard(item)}>x</button></li>)}</ul>
             <p>Price without discount: ${calculateSubtotal().noDiscount} USD</p>
             <p>Discount: ${calculateSubtotal().totalDiscount} USD</p>
             <p>Subtotal: ${calculateSubtotal().subtotal} USD</p>
