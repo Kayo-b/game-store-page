@@ -48,13 +48,34 @@ const Shop = ({setCart, shopCart}) => {
 
     function AddToCart(item) {
         console.log(item.title + ' was added')
-        let dealObj = {
+        let repeatedItem = false
+        if(shopCart.length > 0) {
+            for(let x = 0; x < shopCart.length; x++) {
+                console.log("repeated test")
+                    if(shopCart[x].dealID === item.dealID) {
+                        
+                        let newShopCart = shopCart;
+                        console.log(newShopCart)
+                        newShopCart[x].quantity += 1;
+                        setCart([...shopCart]);
+                        repeatedItem = true;
+                    }
+            }
+        }
+
+        if(repeatedItem === false) {
+            let dealObj = {
                 title: item.title,
-                salePrice: item.salePrice,
+                salePrice: item.salePrice ,
                 savings: item.savings,
-                normalPrice: item.normalPrice}
+                normalPrice: item.normalPrice,
+                dealID: item.dealID,
+                quantity: 1
+            }
 
         setCart([...shopCart, dealObj])
+        }
+
     }
 
   return (
@@ -65,7 +86,7 @@ const Shop = ({setCart, shopCart}) => {
            let gameName = `${item.metacriticLink}`
           
             gameName = gameName.slice(9)
-            return <div key={item.title} className="gameDiv">
+            return <div key={item.dealID + items.indexOf(item)} className="gameDiv">
                 <h5 className="game-title">{item.title}</h5>
                 <img className="thumbnail" src={item.thumb} alt="thumbnail"></img>
                 

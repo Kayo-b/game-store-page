@@ -30,7 +30,7 @@ const Nav = ({shopCart, cartDisplay, setCartDisplay}) => {
              </ul>
 
                 <Link >
-                    <div className='cartNav' onClick={() => shopCartDisplayOnOff()}>Cart {shopCart.length > 0 ? shopCart.length : "0"}</div>    
+                    <div className='cartNav' onClick={() => shopCartDisplayOnOff()}>CART {shopCart.length > 0 ? shopCart.length : "0"}</div>    
                 </Link>
         </nav>
     )

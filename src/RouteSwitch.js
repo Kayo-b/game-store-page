@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import './App.css';
 import { BrowserRouter, Routes, Route} from "react-router-dom";
 import App from "./components/App";
@@ -14,11 +14,11 @@ import { ItemsList } from "./components/Deals";
 const RouteSwitch = () => {
     const [shopCart, setCart] = useState([]);
     const [cartDisplay, setCartDisplay] = useState('none')
-    
+    console.log(shopCart)
     return(
         <BrowserRouter>
             <Nav shopCart={shopCart} cartDisplay={cartDisplay} setCartDisplay={setCartDisplay}/>
-            <Cart  shopCart={shopCart} setCart={setCart} cartDisplay={cartDisplay}/>
+            <Cart  shopCart={shopCart} setCart={setCart} cartDisplay={cartDisplay} setCartDisplay={setCartDisplay}/>
             <Routes>
                 <Route path="/" element={<App />} />
                 <Route path="/about" element={<About />} />
