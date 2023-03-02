@@ -48,7 +48,7 @@ nav {
   bottom: 0;
   flex-direction: column;
   position:fixed;
-  opacity: 98%;
+  opacity: 95%;
   min-width: 300px;
   max-width: 300px;
   overflow: scroll;
@@ -114,14 +114,85 @@ nav {
   max-width: 40vh;
   max-height: 40vh;
   padding: 10px;
+  
 }
 
+Link {
+  text-decoration: none;
+}
+
+.cartContainer {
+
+}
 .cartNav {
   position: -webkit-sticky;
   font-size: small;
+  border: 1px solid gray;
+  padding: 2px;
   
+  
+}
+.cartNav:hover {
+  background-color: rgba(129, 129, 129, 0.508);
 }
 .amoutInput {
   width: 10px;
   border: none;
+}
+
+
+.searchElem {
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  margin-left: 5px;
+}
+
+.searchContainer {
+  display: flex;
+  flex-wrap: nowrap;
+  width: 180px;
+}
+.search {
+  padding: 2px; 
+  font-size: 0.9em;
+  inline-size: 160px;
+  line-height: 20px;
+  border-color: rgb(95, 72, 117);
+  border: 2px solid rgba(255, 255, 255, 0);
+  border-radius: 3px;
+}
+
+.searchButton {
+  background: url(svg/search-svgrepo-com.svg) 0 0 no-repeat;
+  background-size: cover;
+  text-indent: -99999px; 
+  width: 30px; 
+  height: 30px;
+  display: block;
+  transform: scale(60%);
+  position: relative;
+  left:-33px;
+  border: 2px solid rgb(40, 40, 62, 0);
+  filter: invert(40%);
+  
+  
+
+}
+
+.searchButton:hover {
+  filter: invert(60%);
+  transform: scale(65%);
+  cursor: pointer;
+}
+
+.searchContainer:hover .search {
+  border: 2px solid lightblue;
+
+  border-radius: 3px;
+}
+.search:focus {
+  outline: none;
+  
+  border: 2px solid lightblue;
 }
