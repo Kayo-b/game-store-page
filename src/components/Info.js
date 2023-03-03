@@ -10,11 +10,8 @@ const Info = () => {
 
     
     const location = useLocation();
-    console.log(location.state)
-    const {name} = location.state
 
-    
-    console.log(name)
+    const {name} = location.state
 
     const fetchItem = async() => {
         const fetchItem = await fetch(
@@ -24,8 +21,8 @@ const Info = () => {
         const item = await fetchItem.json()
         setItem(item)
     }   
-    console.log(item)
 
+    console.log(item)
     return( 
         <div className="info"> 
             <h3>{item.name_original}</h3>

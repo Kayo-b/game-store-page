@@ -5,8 +5,9 @@ import App from "./components/App";
 import Nav from "./components/Nav";
 import About from "./components/About";
 import Deals from "./components/Deals";
-import Info from "./components/Info"
-import Cart from "./components/Cart"
+import Info from "./components/Info";
+import Cart from "./components/Cart";
+import Sidebar from "./components/Sidebar";
 import { ItemsList } from "./components/Deals";
 
 
@@ -20,13 +21,14 @@ const RouteSwitch = () => {
     const [items, setItems] = useState([])
     const [apiList, setApiList] = useState([
                     'https://www.cheapshark.com/api/1.0/deals?storeID=1', 
-                    'https://www.cheapshark.com/api/1.0/deals?storeID=6'])
+                    'https://www.cheapshark.com/api/1.0/deals?storeID=7'])
 
     async function fetchItems() {
         let allGamesArray = [];
         for(let x = 0; x < apiList.length; x++) {
             console.log("FETCHINGGGGGGGGGGG")
             const data = await(await fetch(apiList[x])).json();
+            data.map(item => item.newKeyVal = fetch(`https://store.steampowered.com/api/appdetails?appids={${item.steamAppID}}`))
             allGamesArray = allGamesArray.concat(data)
         }
         setItems(allGamesArray)
@@ -54,7 +56,7 @@ const RouteSwitch = () => {
         
     //     dataFetch()
     // },[])
-    console.log(searchResult.length)
+   
     return(
         <BrowserRouter>
             <Nav 
@@ -66,6 +68,7 @@ const RouteSwitch = () => {
             setSearchResult={setSearchResult}/>
             
             <Cart shopCart={shopCart} setCart={setCart} cartDisplay={cartDisplay} setCartDisplay={setCartDisplay}/>
+
             <Routes>
                 <Route path="/" element={<App />} />
                 <Route path="/about" element={<About test={test} />} />

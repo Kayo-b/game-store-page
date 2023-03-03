@@ -1,5 +1,6 @@
 import React, { useState, useEffect }from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import Sidebar from './Sidebar'
 import Cart from './Cart';
 
 const Shop = ({setCart, shopCart, message, items, searchResult, setSearchResult}) => {
@@ -44,6 +45,9 @@ const Shop = ({setCart, shopCart, message, items, searchResult, setSearchResult}
           case '6':
               return "D2D"
           break;
+          case '7':
+            return "GoG"
+            break;
           default:
               return "?"  
 
@@ -57,7 +61,6 @@ const Shop = ({setCart, shopCart, message, items, searchResult, setSearchResult}
                     if(shopCart[x].dealID === item.dealID) {
                         
                         let newShopCart = shopCart;
-                        console.log(newShopCart)
                         newShopCart[x].quantity += 1;
                         setCart([...shopCart]);
                         repeatedItem = true;
@@ -82,8 +85,11 @@ const Shop = ({setCart, shopCart, message, items, searchResult, setSearchResult}
 
 if(searchResult.length > 0) {
     return (
-        <div className="shop">
-            <div className="message">{message}</div>
+
+        <div className="mainDealsContainer">
+            <Sidebar />
+            <div className="shop">
+                <div className="message">{message}</div>
             
             {searchResult?.map(item => { 
                let gameName = `${item.metacriticLink}`
@@ -103,17 +109,20 @@ if(searchResult.length > 0) {
                     </Link>
                     
                     <button onClick={() => AddToCart(item)}>Add to Cart</button>
+                </div>
+    })}   
+            </div>   
         </div>
-    })}
-               
-              </div>   
       );
 }
   return (
+    <div className="mainDealsContainer">
+        <Sidebar />
     <div className="shop">
         <div className="message">{message}</div>
         
         {items?.map(item => { 
+            console.log(item)
            let gameName = `${item.metacriticLink}`
           
             gameName = gameName.slice(9)
@@ -131,10 +140,11 @@ if(searchResult.length > 0) {
                 </Link>
                 
                 <button onClick={() => AddToCart(item)}>Add to Cart</button>
-    </div>
+             </div>
 })}
            
           </div>   
+    </div>
   );
 
 }

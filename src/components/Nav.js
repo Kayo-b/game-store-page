@@ -4,9 +4,9 @@ import RouteSwitch from '../RouteSwitch';
 
 const Nav = ({shopCart, cartDisplay, setCartDisplay, items, searchResult, setSearchResult}) => {
     const [prevInputValue, setPrevInputValue] = useState("")
-
+    // const [tempArr, setTempArr] = useState([])
     const shopCartEle = document.getElementById("shopCart")
-    
+    let tempArr = []
     function shopCartDisplayOnOff() {
         //shopCartEle.style.display === 'none' ? shopCartEle.style.display = 'flex' : shopCartEle.style.display = 'none'
         cartDisplay === 'none' ? setCartDisplay('flex') : setCartDisplay('none')
@@ -14,21 +14,20 @@ const Nav = ({shopCart, cartDisplay, setCartDisplay, items, searchResult, setSea
 
     function checkForDouble(newItem) {
         let result = false;
-        searchResult.map(item => {if(newItem.dealID === item.dealID){
+        tempArr.map(item => {if(newItem.dealID === item.dealID){
             result = true;
         }})
         return result
     }
     
     function searchOnChange(input) {
-        let tempArr = []
-        console.log("input  =  " + input)
-        // setSearchResult([])
+
         if(input.length > 0) {
+
             items.map(item => {
-                
+                console.log(checkForDouble(item))
                 if(item.title.toLowerCase().includes(input.toLowerCase()) && checkForDouble(item) === false) {
-                    console.log(item.title)
+                    
                     tempArr = tempArr.concat(item)
                     // let temp = searchResult
                     
