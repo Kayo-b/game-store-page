@@ -122,7 +122,7 @@ if(searchResult.length > 0) {
         <div className="message">{message}</div>
         
         {items?.map(item => { 
-            console.log(item)
+          
            let gameName = `${item.metacriticLink}`
           
             gameName = gameName.slice(9)

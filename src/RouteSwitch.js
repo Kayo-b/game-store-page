@@ -28,9 +28,13 @@ const RouteSwitch = () => {
         for(let x = 0; x < apiList.length; x++) {
             console.log("FETCHINGGGGGGGGGGG")
             const data = await(await fetch(apiList[x])).json();
-            data.map(item => item.newKeyVal = fetch(`https://store.steampowered.com/api/appdetails?appids={${item.steamAppID}}`))
+            //data.map(async item => item.newKeyVal = await(await fetch(`https://salty-citadel-78352.herokuapp.com/https://store.steampowered.com/api/appdetails?appids=${item.steamAppID}`)).json().data.name)
             allGamesArray = allGamesArray.concat(data)
-        }
+        }   
+        const test =  await (await fetch("https://salty-citadel-78352.herokuapp.com/https://api.steampowered.com/ISteamApps/GetAppList/v2/")).json();
+        
+       // /IStoreService/GetAppList/v1/?key=98EAB273BB02586DBC4DDAC476EB3EDD&format=json
+        console.log(test)
         setItems(allGamesArray)
         const message = allGamesArray.length > 0 ? `${allGamesArray.length} deals found` : 'No deals found';
         setMessage(message);
