@@ -82,12 +82,12 @@ const Shop = ({setCart, shopCart, message, items, searchResult, setSearchResult}
         }
 
     }
-
+console.log(searchResult)
 if(searchResult.length > 0) {
     return (
 
         <div className="mainDealsContainer">
-            <Sidebar />
+            <Sidebar items={items} searchResult={searchResult} setSearchResult={setSearchResult}/>
             <div className="shop">
                 <div className="message">{message}</div>
             
@@ -96,20 +96,20 @@ if(searchResult.length > 0) {
               
                 gameName = gameName.slice(9)
                 return <div key={item.dealID + items.indexOf(item)} className="gameDiv">
-                    <h5 className="game-title">{item.title}</h5>
-                    <img className="thumbnail" src={item.thumb} alt="thumbnail"></img>
-                    
-                    <a href={`https://www.cheapshark.com/redirect?dealID={${item.dealID}}`}>
-                        
-                        <p className="store-link">Get it on {storeID(item.storeID)}</p>
-                        
-                    </a>
-                    <Link to={`/deals/${gameName}`} state={{name: gameName}}>
-                        <div className="info">Info</div>
-                    </Link>
-                    
-                    <button onClick={() => AddToCart(item)}>Add to Cart</button>
-                </div>
+                            <h5 className="game-title">{item.title}</h5>
+                            <img className="thumbnail" src={item.thumb} alt="thumbnail"></img>
+
+                            <a href={`https://www.cheapshark.com/redirect?dealID={${item.dealID}}`}>
+
+                                <p className="store-link">Get it on {storeID(item.storeID)}</p>
+
+                            </a>
+                            <Link to={`/deals/${gameName}`} state={{name: gameName}}>
+                                <div className="info">Info</div>
+                            </Link>
+
+                            <button onClick={() => AddToCart(item)}>Add to Cart</button>
+                        </div>
     })}   
             </div>   
         </div>
@@ -117,7 +117,7 @@ if(searchResult.length > 0) {
 }
   return (
     <div className="mainDealsContainer">
-        <Sidebar />
+        <Sidebar items={items} searchResult={searchResult} setSearchResult={setSearchResult}/>
     <div className="shop">
         <div className="message">{message}</div>
         
@@ -127,20 +127,20 @@ if(searchResult.length > 0) {
           
             gameName = gameName.slice(9)
             return <div key={item.dealID + items.indexOf(item)} className="gameDiv">
-                <h5 className="game-title">{item.title}</h5>
-                <img className="thumbnail" src={item.thumb} alt="thumbnail"></img>
-                
-                <a href={`https://www.cheapshark.com/redirect?dealID={${item.dealID}}`}>
-                    
-                    <p className="store-link">Get it on {storeID(item.storeID)}</p>
-                    
-                </a>
-                <Link to={`/deals/${gameName}`} state={{name: gameName}}>
-                    <div className="info">Info</div>
-                </Link>
-                
-                <button onClick={() => AddToCart(item)}>Add to Cart</button>
-             </div>
+                        <h5 className="game-title">{item.title}</h5>
+                        <img className="thumbnail" src={item.thumb} alt="thumbnail"></img>
+
+                        <a href={`https://www.cheapshark.com/redirect?dealID={${item.dealID}}`}>
+
+                            <p className="store-link">Get it on {storeID(item.storeID)}</p>
+
+                        </a>
+                        <Link to={`/deals/${gameName}`} state={{name: gameName}}>
+                            <div className="info">Info</div>
+                        </Link>
+
+                        <button onClick={() => AddToCart(item)}>Add to Cart</button>
+                    </div>
 })}
            
           </div>   

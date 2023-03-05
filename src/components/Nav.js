@@ -2,44 +2,18 @@ import React, { ReactDOM, useState } from 'react';
 import { Link } from 'react-router-dom'
 import RouteSwitch from '../RouteSwitch';
 
-const Nav = ({shopCart, cartDisplay, setCartDisplay, items, searchResult, setSearchResult}) => {
-    const [prevInputValue, setPrevInputValue] = useState("")
-    // const [tempArr, setTempArr] = useState([])
-    const shopCartEle = document.getElementById("shopCart")
-    let tempArr = []
+const Nav = ({shopCart, cartDisplay, setCartDisplay, items, searchResult, setSearchResult, searchBoxResult, setSearchBoxResult}) => {
+
     function shopCartDisplayOnOff() {
-        //shopCartEle.style.display === 'none' ? shopCartEle.style.display = 'flex' : shopCartEle.style.display = 'none'
+        
         cartDisplay === 'none' ? setCartDisplay('flex') : setCartDisplay('none')
     } 
 
-    function checkForDouble(newItem) {
-        let result = false;
-        tempArr.map(item => {if(newItem.dealID === item.dealID){
-            result = true;
-        }})
-        return result
+    async function searchGameDeal(input) {
+        let searchGameDeal = await( await fetch(`https://www.cheapshark.com/api/1.0/games?title=${input}`)).json()
+        setSearchBoxResult(searchGameDeal)
+        
     }
-    
-    function searchOnChange(input) {
-
-        if(input.length > 0) {
-
-            items.map(item => {
-                console.log(checkForDouble(item))
-                if(item.title.toLowerCase().includes(input.toLowerCase()) && checkForDouble(item) === false) {
-                    
-                    tempArr = tempArr.concat(item)
-                    // let temp = searchResult
-                    
-                    // setSearchResult([...searchResult, item])
-                }
-            })
-        }
-        setSearchResult(tempArr)
-    }
-
-    
-
     return(
         <nav>
             <h3>nav</h3>
@@ -61,13 +35,13 @@ const Nav = ({shopCart, cartDisplay, setCartDisplay, items, searchResult, setSea
              </ul>
                 <div className="searchContainer">
                     <div className="searchElem">
-                        <input type="search" className="search" onChange={e => searchOnChange(e.target.value)}></input>
-                        <div onClick={ e => searchOnChange(e.target.parentNode.children[0].value)} className="searchButton"></div>
+                        <input type="search" className="search" onChange={e => console.log(e.target.value)}></input>
+                        <div onClick={ e => searchGameDeal(e.target.parentNode.children[0].value)} className="searchButton"></div>
                     </div>
                 </div>
                 <Link style={{textDecoration:'none'}}>
                     <div className='cartContainer'>
-                        <div className='cartNav' onClick={() => shopCartDisplayOnOff()}>CART ({shopCart.length > 0 ? shopCart.length : "0"})</div>    
+                        <div className='cartNav' onClick={() => shopCartDisplayOnOff()}>CART [{shopCart.length > 0 ? shopCart.length : "0"}]</div>    
                     </div>
                     
                 </Link>

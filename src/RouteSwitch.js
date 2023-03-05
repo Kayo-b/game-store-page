@@ -8,6 +8,7 @@ import Deals from "./components/Deals";
 import Info from "./components/Info";
 import Cart from "./components/Cart";
 import Sidebar from "./components/Sidebar";
+import SearchResult from "./components/SearchResult"
 import { ItemsList } from "./components/Deals";
 
 
@@ -19,22 +20,29 @@ const RouteSwitch = () => {
     const [searchResult, setSearchResult] = useState([])
     const [message, setMessage] = useState('');
     const [items, setItems] = useState([])
+    const [searchBoxResult, setSearchBoxResult] = useState([]);
     const [apiList, setApiList] = useState([
-                    'https://www.cheapshark.com/api/1.0/deals?storeID=1', 
-                    'https://www.cheapshark.com/api/1.0/deals?storeID=7'])
+                    'https://www.cheapshark.com/api/1.0/deals?storeID=1&pageNumber=0&sortBy=metacritic',
+                    'https://www.cheapshark.com/api/1.0/deals?storeID=7&pageNumber=0&sortBy=metacritic'])
 
     async function fetchItems() {
         let allGamesArray = [];
         for(let x = 0; x < apiList.length; x++) {
             console.log("FETCHINGGGGGGGGGGG")
             const data = await(await fetch(apiList[x])).json();
-            //data.map(async item => item.newKeyVal = await(await fetch(`https://salty-citadel-78352.herokuapp.com/https://store.steampowered.com/api/appdetails?appids=${item.steamAppID}`)).json().data.name)
+            data.map(async item => { 
+                if(item.steamAppID != null) {
+                    let steamApiFetch = await(await fetch(`https://salty-citadel-78352.herokuapp.com/https://store.steampowered.com/api/appdetails?appids=${item.steamAppID}`)).json()
+                    item.genres = steamApiFetch[item.steamAppID].data.genres
+                }
+               
+        })
             allGamesArray = allGamesArray.concat(data)
         }   
-        const test =  await (await fetch("https://salty-citadel-78352.herokuapp.com/https://api.steampowered.com/ISteamApps/GetAppList/v2/")).json();
+       //const test =  await (await fetch("https://salty-citadel-78352.herokuapp.com/https://store.steampowered.com/api/appdetails?appids=440")).json();
         
        // /IStoreService/GetAppList/v1/?key=98EAB273BB02586DBC4DDAC476EB3EDD&format=json
-        console.log(test)
+   // console.log(test)
         setItems(allGamesArray)
         const message = allGamesArray.length > 0 ? `${allGamesArray.length} deals found` : 'No deals found';
         setMessage(message);
@@ -60,7 +68,7 @@ const RouteSwitch = () => {
         
     //     dataFetch()
     // },[])
-   
+    console.log(items)
     return(
         <BrowserRouter>
             <Nav 
@@ -69,14 +77,18 @@ const RouteSwitch = () => {
             setCartDisplay={setCartDisplay} 
             items={items} 
             searchResult={searchResult} 
-            setSearchResult={setSearchResult}/>
+            setSearchResult={setSearchResult}
+            searchBoxResult={searchBoxResult}
+            setSearchBoxResult={setSearchBoxResult}    
+            />
             
             <Cart shopCart={shopCart} setCart={setCart} cartDisplay={cartDisplay} setCartDisplay={setCartDisplay}/>
-
+            <SearchResult searchBoxResult={searchBoxResult} setSearchBoxResult={setSearchBoxResult}/>
             <Routes>
                 <Route path="/" element={<App />} />
                 <Route path="/about" element={<About test={test} />} />
-                <Route path="/deals/" element={<Deals 
+                <Route path="/deals/" element={
+                    <Deals 
                     setCart={setCart} 
                     shopCart={shopCart} 
                     items={items} 
