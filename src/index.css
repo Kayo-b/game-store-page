@@ -58,7 +58,7 @@ nav {
 
 }
 
-.shopCartContaienr {
+.shopCartContainer {
   display: flex;
   justify-content: flex-end;
   overflow: scroll;
@@ -147,15 +147,16 @@ Link {
   display: flex;
   align-items: center;
   flex-wrap: nowrap;
-  margin-left: 5px;
+  width: 200px;
 }
 
 .searchContainer {
   display: flex;
   flex-wrap: nowrap;
-  width: 180px;
+  width: 160px;
 }
 .search {
+  display: flex;
   padding: 2px; 
   font-size: 0.9em;
   inline-size: 160px;
@@ -174,12 +175,9 @@ Link {
   display: block;
   transform: scale(60%);
   position: relative;
-  left:-33px;
+  left: -35px;
   border: 2px solid rgb(40, 40, 62, 0);
   filter: invert(40%);
-  
-  
-
 }
 
 .searchButton:hover {
@@ -215,4 +213,55 @@ Link {
   display: flex;
   flex-direction: column;
   justify-content:flex-start;
+}
+.box-result-container {
+  display: flex;
+  width: 350px;
+  position: relative;
+}
+
+.search-box-result-open {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  width: 350px;
+  right: 30px;
+  top: 26px;
+  background-color: rgba(35, 35, 35, 0.853);
+  padding: 5px;
+  margin: 5px;
+}
+
+.search-box-result-closed {
+  display: none;
+  flex-direction: column;
+  position: absolute;
+  width: 350px;
+  right: 30px;
+  top: 26px;
+  background-color: rgba(35, 35, 35, 0.853);
+  padding: 5px;
+}
+
+.results {
+  display: flex;
+  margin: 5px;
+}
+/* 
+.results:hover {
+  background-color: rgba(0, 0, 0, 0.778);
+} */
+
+.result-deal-box {
+  padding: 0px;
+  margin: 0px;
+}
+
+.result-box-container {
+  padding: 0px;
+  margin: 3px;
+}
+
+.result-box-container:hover {
+  background-color: rgba(24, 23, 44, 0.908);
 }

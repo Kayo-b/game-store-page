@@ -69,13 +69,13 @@ const Cart = ({shopCart, setCart, cartDisplay, setCartDisplay}) => {
         setCart([...shopCart])
     }
     return(
-        <div className='shopCartContaienr'>
+        <div className='shopCartContainer'>
             <div className='shopCart' style={{display: cartDisplay}}>
                 <button onClick={() => setCartDisplay('none')}>X</button>
                 <h3>Shopping Cart</h3>
                 <p>This is a page under construction</p>
                 <ul className="cartList">{shopCart.map(item => 
-                    <li key={item.dealID + shopCart.indexOf(item)}>
+                    <li key={item.dealID + shopCart.indexOf(item)} className="button-list">
 
                     <button onClick={() => RemoveFromCard(item)}>x</button>{item.title}
                     <button onClick={() => AddQuantity(item)}>+</button>

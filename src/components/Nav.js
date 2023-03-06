@@ -1,8 +1,10 @@
 import React, { ReactDOM, useState } from 'react';
 import { Link } from 'react-router-dom'
 import RouteSwitch from '../RouteSwitch';
+import SearchResult from './SearchResult'
 
-const Nav = ({shopCart, cartDisplay, setCartDisplay, items, searchResult, setSearchResult, searchBoxResult, setSearchBoxResult}) => {
+const Nav = ({shopCart, cartDisplay, setCartDisplay, items, searchResult, setSearchResult, searchBoxResult, setSearchBoxResult, isOpen, setIsOpen}) => {
+    const [saveInput, setSaveInput] = useState("")
 
     function shopCartDisplayOnOff() {
         
@@ -10,10 +12,20 @@ const Nav = ({shopCart, cartDisplay, setCartDisplay, items, searchResult, setSea
     } 
 
     async function searchGameDeal(input) {
-        let searchGameDeal = await( await fetch(`https://www.cheapshark.com/api/1.0/games?title=${input}`)).json()
-        setSearchBoxResult(searchGameDeal)
+        if(input === "") return
+        if(saveInput !== input) {
+            let searchGameDeal = await( await fetch(`https://www.cheapshark.com/api/1.0/games?title=${input}&limit=6`)).json()
+            console.log("fetch!")
+            setSearchBoxResult(searchGameDeal)
+            setSaveInput(input)
+        }
+
+            !isOpen ? setIsOpen(true) : console.log("do nothing")
+        
+        
         
     }
+    
     return(
         <nav>
             <h3>nav</h3>
@@ -37,7 +49,9 @@ const Nav = ({shopCart, cartDisplay, setCartDisplay, items, searchResult, setSea
                     <div className="searchElem">
                         <input type="search" className="search" onChange={e => console.log(e.target.value)}></input>
                         <div onClick={ e => searchGameDeal(e.target.parentNode.children[0].value)} className="searchButton"></div>
+                        
                     </div>
+                    <SearchResult searchBoxResult={searchBoxResult} setSearchBoxResult={setSearchBoxResult} isOpen={isOpen} setIsOpen={setIsOpen}/>
                 </div>
                 <Link style={{textDecoration:'none'}}>
                     <div className='cartContainer'>

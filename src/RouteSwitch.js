@@ -21,6 +21,7 @@ const RouteSwitch = () => {
     const [message, setMessage] = useState('');
     const [items, setItems] = useState([])
     const [searchBoxResult, setSearchBoxResult] = useState([]);
+    const [isOpen, setIsOpen] = useState(false)
     const [apiList, setApiList] = useState([
                     'https://www.cheapshark.com/api/1.0/deals?storeID=1&pageNumber=0&sortBy=metacritic',
                     'https://www.cheapshark.com/api/1.0/deals?storeID=7&pageNumber=0&sortBy=metacritic'])
@@ -52,9 +53,33 @@ const RouteSwitch = () => {
       async function handleSubmit(){
           await fetchItems();
         }
-            
+
         handleSubmit()
-   
+
+        const closeSearchBox = e => {
+            if(e.target.parentNode.children[0].value !== "") {
+                if(e.target.parentNode.className !== "searchElem") {
+                    setIsOpen(false)
+                }      
+            }   
+        }
+
+        const closeCart = e => {
+            if(e.target.className !== "cartNav" && e.target.parentNode.className !== "shopCart" && e.target.parentNode.className !== "cartList" && e.target.parentNode.className !== "button-list") {
+                if(e.target.parentNode.className !== "shopCartContainer") {
+                    setCartDisplay("none")
+                }
+            }
+        }
+
+        function eventListeners() {
+            document.body.addEventListener('click', closeSearchBox)
+            document.body.addEventListener('click', closeCart)
+        }
+        eventListeners()
+
+        return() => eventListeners
+
     }, [])  
 
     // useEffect(() => {
@@ -68,7 +93,7 @@ const RouteSwitch = () => {
         
     //     dataFetch()
     // },[])
-    console.log(items)
+
     return(
         <BrowserRouter>
             <Nav 
@@ -79,11 +104,13 @@ const RouteSwitch = () => {
             searchResult={searchResult} 
             setSearchResult={setSearchResult}
             searchBoxResult={searchBoxResult}
-            setSearchBoxResult={setSearchBoxResult}    
+            setSearchBoxResult={setSearchBoxResult}
+            isOpen={isOpen}
+            setIsOpen={setIsOpen}    
             />
             
             <Cart shopCart={shopCart} setCart={setCart} cartDisplay={cartDisplay} setCartDisplay={setCartDisplay}/>
-            <SearchResult searchBoxResult={searchBoxResult} setSearchBoxResult={setSearchBoxResult}/>
+            {/* <SearchResult searchBoxResult={searchBoxResult} setSearchBoxResult={setSearchBoxResult} isOpen={isOpen} setIsOpen={setIsOpen}/> */}
             <Routes>
                 <Route path="/" element={<App />} />
                 <Route path="/about" element={<About test={test} />} />
