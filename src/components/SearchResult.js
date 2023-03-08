@@ -4,7 +4,7 @@ const SearchResult = ({searchBoxResult, setSearchBoxResult, isOpen, setIsOpen}) 
   
 
     return(
-        <div className="box-result-container">
+        <div className="box-result-main-container">
         <div className={"search-box-result-" + (isOpen ? "open" : "closed")}>
         {searchBoxResult.map(item => {
                 if(item.thumb.includes("https://cdn.cloudflare.steamstatic.com/steam")) {

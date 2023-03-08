@@ -4,38 +4,9 @@ import Sidebar from './Sidebar'
 import Cart from './Cart';
 
 const Shop = ({setCart, shopCart, message, items, searchResult, setSearchResult}) => {
-    // const [message, setMessage] = useState('');
-    // const [items, setItems] = useState([])
-    // const [apiList, setApiList] = useState([
-    //                 'https://www.cheapshark.com/api/1.0/deals?storeID=1', 
-    //                 'https://www.cheapshark.com/api/1.0/deals?storeID=6'])
 
-    // async function fetchItems() {
-    //     let allGamesArray = [];
-    //     for(let x = 0; x < apiList.length; x++) {
-    //         console.log("FETCHINGGGGGGGGGGG")
-    //         const data = await(await fetch(apiList[x])).json();
-    //         allGamesArray = allGamesArray.concat(data)
-    //     }
-
-
-    //     setItems(allGamesArray)
-
-    //     const message = allGamesArray.length > 0 ? `${allGamesArray.length} deals found` : 'No deals found';
-    //     setMessage(message);
-
-    // }
-
-    // useEffect(() => {
-    //   async function handleSubmit(){
-    //       await fetchItems();
-    //     }
-    //     if(items.length === 0) {
-    //         console.log("fetch?")
-    //         handleSubmit()
-    //     }
-        
-    // }, [])  
+    const[genresArray, setGenresArray] = useState([])
+    const message2 = searchResult.length > 0 ? `${searchResult.length} deals found` : 'No deals found';
 
     function storeID(id) {
       switch(id){
@@ -82,70 +53,159 @@ const Shop = ({setCart, shopCart, message, items, searchResult, setSearchResult}
         }
 
     }
-console.log(searchResult)
+
+if(searchResult.length === 0 && genresArray.length > 0) {
+    // return(
+    //     <div className="mainDealsContainer">
+    //         <Sidebar items={items} searchResult={searchResult} setSearchResult={setSearchResult} genresArray={genresArray} setGenresArray={setGenresArray}/>
+            
+    //         <div className="shop-container"> 
+    //         <h5 className="message">{message2}</h5>
+    //         <div className="shop" style={{alignItems: "start"}}>
+           
+    //         </div>
+    //             </div>   
+    //     </div>
+    // )
+    return (
+
+        <div className="mainDealsContainer">
+        <div className="sidebar-container">
+            <Sidebar items={items} searchResult={searchResult} setSearchResult={setSearchResult} genresArray={genresArray} setGenresArray={setGenresArray}/>
+        </div>
+
+        <div className="shop-container"> 
+            <h5 className="message">{message2}</h5>
+        <div className="shop" style={{alignItems: "start"}}>
+    
+    
+        
+        {searchResult?.map(item => { 
+          
+           let gameName = `${item.metacriticLink}`
+          
+            gameName = gameName.slice(9)
+            return <div className="game-container">
+                    <a href={`https://www.cheapshark.com/redirect?dealID={${item.dealID}}`} key={item.dealID + items.indexOf(item)} className="gameDiv">
+                        <span className="game-title-container"><h5 className="game-title">{item.title}</h5></span>
+                        <img className="thumbnail" src={item.thumb} alt="thumbnail"></img>
+                        <p className="store-link" style={{color: "white"}}><span className="sale-price">$ {item.salePrice}</span><span  className={`${storeID(item.storeID)}`}></span></p>
+{/*                     
+                        <a href={`https://www.cheapshark.com/redirect?dealID={${item.dealID}}`}>
+
+                            <p className="store-link" style={{color: "white"}}>Get it on {storeID(item.storeID)}</p>
+
+                        </a> */}
+                        {/* <Link to={`/deals/${gameName}`} state={{name: gameName}}>
+                            <div className="info" style={{color: "white"}}>+Info</div>
+                        </Link> */}
+
+                        
+                    </a>
+                    <button onClick={() => AddToCart(item)} className="add-to-cart-btn">Add to Cart</button>
+                    </div>
+                   
+            })
+        }
+           
+          </div>  
+          </div>   
+    </div>
+      )
+}
 if(searchResult.length > 0) {
     return (
 
         <div className="mainDealsContainer">
-            <Sidebar items={items} searchResult={searchResult} setSearchResult={setSearchResult}/>
-            <div className="shop">
-                <div className="message">{message}</div>
-            
-            {searchResult?.map(item => { 
-               let gameName = `${item.metacriticLink}`
-              
-                gameName = gameName.slice(9)
-                return <div key={item.dealID + items.indexOf(item)} className="gameDiv">
-                            <h5 className="game-title">{item.title}</h5>
-                            <img className="thumbnail" src={item.thumb} alt="thumbnail"></img>
-
-                            <a href={`https://www.cheapshark.com/redirect?dealID={${item.dealID}}`}>
-
-                                <p className="store-link">Get it on {storeID(item.storeID)}</p>
-
-                            </a>
-                            <Link to={`/deals/${gameName}`} state={{name: gameName}}>
-                                <div className="info">Info</div>
-                            </Link>
-
-                            <button onClick={() => AddToCart(item)}>Add to Cart</button>
-                        </div>
-    })}   
-            </div>   
+        <div className="sidebar-container">
+            <Sidebar items={items} searchResult={searchResult} setSearchResult={setSearchResult} genresArray={genresArray} setGenresArray={setGenresArray}/>
         </div>
-      );
+
+        <div className="shop-container"> 
+            <h5 className="message">{message2}</h5>
+        <div className="shop">
+    
+    
+        
+        {searchResult?.map(item => { 
+          
+           let gameName = `${item.metacriticLink}`
+          
+            gameName = gameName.slice(9)
+            return <div className="game-container">
+                    <a href={`https://www.cheapshark.com/redirect?dealID={${item.dealID}}`} key={item.dealID + items.indexOf(item)} className="gameDiv">
+                        <span className="game-title-container"><h5 className="game-title">{item.title}</h5></span>
+                        <img className="thumbnail" src={item.thumb} alt="thumbnail"></img>
+                        <p className="store-link" style={{color: "white"}}><span className="sale-price">$ {item.salePrice}</span><span  className={`${storeID(item.storeID)}`}></span></p>
+{/*                     
+                        <a href={`https://www.cheapshark.com/redirect?dealID={${item.dealID}}`}>
+
+                            <p className="store-link" style={{color: "white"}}>Get it on {storeID(item.storeID)}</p>
+
+                        </a> */}
+                        {/* <Link to={`/deals/${gameName}`} state={{name: gameName}}>
+                            <div className="info" style={{color: "white"}}>+Info</div>
+                        </Link> */}
+
+                        
+                    </a>
+                    <button onClick={() => AddToCart(item)} className="add-to-cart-btn">Add to Cart</button>
+                    </div>
+                   
+            })
+        }
+           
+          </div>  
+          </div>   
+    </div>
+      )
 }
   return (
     <div className="mainDealsContainer">
-        <Sidebar items={items} searchResult={searchResult} setSearchResult={setSearchResult}/>
-    <div className="shop">
-        <div className="message">{message}</div>
+        <div className="sidebar-container">
+            <Sidebar items={items} searchResult={searchResult} setSearchResult={setSearchResult} genresArray={genresArray} setGenresArray={setGenresArray}/>
+        </div>
+
+        <div className="shop-container"> 
+            <h5 className="message">{message}</h5>
+        <div className="shop">
+    
+    
         
         {items?.map(item => { 
           
            let gameName = `${item.metacriticLink}`
           
             gameName = gameName.slice(9)
-            return <div key={item.dealID + items.indexOf(item)} className="gameDiv">
-                        <h5 className="game-title">{item.title}</h5>
+            return <div className="game-container">
+                    <a href={`https://www.cheapshark.com/redirect?dealID={${item.dealID}}`} key={item.dealID + items.indexOf(item)} className="gameDiv">
+                        <span className="game-title-container"><h5 className="game-title">{item.title}</h5></span>
                         <img className="thumbnail" src={item.thumb} alt="thumbnail"></img>
-
+                        <p className="store-link" style={{color: "white"}}><span className="sale-price">$ {item.salePrice}</span><span  className={`${storeID(item.storeID)}`}></span></p>
+{/*                     
                         <a href={`https://www.cheapshark.com/redirect?dealID={${item.dealID}}`}>
 
-                            <p className="store-link">Get it on {storeID(item.storeID)}</p>
+                            <p className="store-link" style={{color: "white"}}>Get it on {storeID(item.storeID)}</p>
 
-                        </a>
-                        <Link to={`/deals/${gameName}`} state={{name: gameName}}>
-                            <div className="info">Info</div>
-                        </Link>
+                        </a> */}
+                        {/* <Link to={`/deals/${gameName}`} state={{name: gameName}}>
+                            <div className="info" style={{color: "white"}}>+Info</div>
+                        </Link> */}
 
-                        <button onClick={() => AddToCart(item)}>Add to Cart</button>
+                        
+                    </a>
+                    <button onClick={() => AddToCart(item)} className="add-to-cart-btn">Add to Cart</button>
                     </div>
-})}
+                   
+            })
+        }
            
+          </div>  
           </div>   
     </div>
-  );
+  )
+
+  
 
 }
 

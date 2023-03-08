@@ -47,7 +47,7 @@ const Nav = ({shopCart, cartDisplay, setCartDisplay, items, searchResult, setSea
              </ul>
                 <div className="searchContainer">
                     <div className="searchElem">
-                        <input type="search" className="search" onChange={e => console.log(e.target.value)}></input>
+                        <input type="search" className="search"></input>
                         <div onClick={ e => searchGameDeal(e.target.parentNode.children[0].value)} className="searchButton"></div>
                         
                     </div>
@@ -57,7 +57,6 @@ const Nav = ({shopCart, cartDisplay, setCartDisplay, items, searchResult, setSea
                     <div className='cartContainer'>
                         <div className='cartNav' onClick={() => shopCartDisplayOnOff()}>CART [{shopCart.length > 0 ? shopCart.length : "0"}]</div>    
                     </div>
-                    
                 </Link>
         </nav>
     )

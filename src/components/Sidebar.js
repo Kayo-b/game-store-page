@@ -1,9 +1,9 @@
 import React,{useState} from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
-const Sidebar = ({items, searchResult, setSearchResult, shopCart, cartDisplay, setCartDisplay}) => {
-    
-    const [genresArray, setGenresArray] = useState([])
+const Sidebar = ({items, searchResult, setSearchResult, shopCart, cartDisplay, setCartDisplay, setGenresArray, genresArray}) => {
+    const [genreNotFound, setGenreNotFound] = useState(false)
+   
     let tempArr = [];
 
     function removeFromGenreArray(genre) {
@@ -34,23 +34,32 @@ const Sidebar = ({items, searchResult, setSearchResult, shopCart, cartDisplay, s
     }
 
     function SetGenreFilter(genre) {
+       
         let tempGenresArray = genresArray
+
         if(genre !== undefined) tempGenresArray = tempGenresArray.concat(genre)
 
+                
         
-        
-        items.map(item => {
+        items.map((item) => {
             let count = 0;
+
             if(item.genres) {
                 if(tempGenresArray.length === 1) {
                     for(let x = 0; x < item.genres.length; x++) {
                         for(let k = 0; k < tempGenresArray.length; k++) {
                             if(item.genres[x].description === tempGenresArray[k] && checkForDouble(item) === false) {
+                                
                                 tempArr = tempArr.concat(item);
+                                
                             }
+                            
                         }        
                     }
-                } else {
+
+                    // if(tempArr.length === 0) 
+                } 
+                else {
                     for(let x = 0; x < item.genres.length; x++) {
                         for(let k = 0; k < tempGenresArray.length; k++) {
                             if(tempGenresArray[k] === item.genres[x].description && checkForDouble(item) === false) {
@@ -66,6 +75,7 @@ const Sidebar = ({items, searchResult, setSearchResult, shopCart, cartDisplay, s
 
             }
         })
+        // tempArr.length > 0 ? setGenresArray(tempGenresArray) : setGenresArray([])
         setGenresArray(tempGenresArray)
         setSearchResult(tempArr)
     }
@@ -97,6 +107,7 @@ const Sidebar = ({items, searchResult, setSearchResult, shopCart, cartDisplay, s
         }
         setSearchResult(tempArr)
     }
+
     return(<div className="sidebarContainer">
 
         <div className="categories">
@@ -108,7 +119,9 @@ const Sidebar = ({items, searchResult, setSearchResult, shopCart, cartDisplay, s
                         <div onClick={ e => searchOnChange(e.target.parentNode.children[0].value)} className="searchButton"></div>
                     </div>
                 </div>
+                
         <h5>Filter By Genre</h5>
+
         <label>
             <input type="checkbox" onChange={(e) => e.target.checked ? SetGenreFilter(e.target.value) : removeFromGenreArray(e.target.value)} value="Free to Play"></input>
             Free to Play
@@ -118,10 +131,12 @@ const Sidebar = ({items, searchResult, setSearchResult, shopCart, cartDisplay, s
             <input type="checkbox" onChange={(e) => e.target.checked ? SetGenreFilter(e.target.value) : removeFromGenreArray(e.target.value)} value="Action"></input>
             Action
         </label>
+
         <label>
             <input type="checkbox" onChange={(e) => e.target.checked ? SetGenreFilter(e.target.value) : removeFromGenreArray(e.target.value)} value="Adventure"></input>
             Adventure
         </label>
+
         <label>
             <input type="checkbox" onChange={(e) => e.target.checked ? SetGenreFilter(e.target.value) : removeFromGenreArray(e.target.value)} value="Casual"></input>
             Casual
