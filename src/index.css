@@ -1,6 +1,6 @@
-/* html {
-  height: 100%;
-} */
+html {
+  margin: 0;
+}
 body {
   margin: 0;
   min-height: 100vh;
@@ -74,6 +74,16 @@ nav {
   
 }
 
+.shop-cart-background {
+  display: none;
+  width: 107%;
+  height: 100%;
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.416);
+  padding: 0px;
+  margin: -10vh
+}
+
 .shopCart {
   display: none;
   top:0;
@@ -85,7 +95,7 @@ nav {
   max-width: 300px;
   overflow: scroll;
   border: 1px solid black;
-  background-color: rgb(40, 40, 62);
+  background-color: rgb(87, 87, 125);
   padding: 10px;
 
 }
@@ -145,6 +155,25 @@ nav {
   background-color: rgba(149, 149, 149, 0.408);
 }
 
+.gameDiv .tooltip {
+  visibility: hidden;
+  width: 120px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  padding: 5px 0;
+  border-radius: 6px;
+ 
+  /* Position the tooltip text - see examples below! */
+  position: absolute;
+  z-index: 1;
+}
+
+
+.gameDiv:hover .tooltip {
+  visibility: visible;
+}
+
 .game-title {
   max-height:10px;
   padding: 0px;
@@ -188,14 +217,15 @@ Link {
   
   
 }
+
 .cartNav:hover {
   background-color: rgba(129, 129, 129, 0.508);
 }
+
 .amoutInput {
   width: 10px;
   border: none;
 }
-
 
 .searchElem {
   display: flex;
@@ -209,6 +239,7 @@ Link {
   flex-wrap: nowrap;
   width: 160px;
 }
+
 .search {
   display: flex;
   padding: 2px; 
@@ -259,21 +290,39 @@ Link {
 
 .sidebar-display-container {
   display: flex;
+  position: relative;
+
+}
+
+.sidebar-shader {
+  display: none;
+  flex-direction: column;
+  position: absolute;
+  width: 115.5%;
+  height: 100%;
+  margin-left: -5px;
+  background-color: rgba(0, 0, 0, 0.416);
+
 }
 
 .sidebarContainer {
   display: flex;
+  position: relative;
   padding: 5px;
   padding-top: 0px;
   background-color: rgb(60,60,60);
   min-width: 175px;
   height: 100%;
+  
+
 }
 
 .categories {
   display: flex;
   flex-direction: column;
   justify-content:flex-start;
+  position: relative;
+
 }
 .box-result-main-container {
   display: flex;
@@ -386,3 +435,4 @@ Link {
   padding: 0px;
 
 }
+

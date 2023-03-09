@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import Sidebar from './Sidebar'
 import Cart from './Cart';
 
-const Shop = ({setCart, shopCart, message, items, searchResult, setSearchResult}) => {
+const Shop = ({setCart, shopCart, message, items, searchResult, setSearchResult, cartDisplay}) => {
 
     const[genresArray, setGenresArray] = useState([])
     const message2 = searchResult.length > 0 ? `${searchResult.length} deals found` : 'No deals found';
@@ -55,24 +55,16 @@ const Shop = ({setCart, shopCart, message, items, searchResult, setSearchResult}
     }
 
 if(searchResult.length === 0 && genresArray.length > 0) {
-    // return(
-    //     <div className="mainDealsContainer">
-    //         <Sidebar items={items} searchResult={searchResult} setSearchResult={setSearchResult} genresArray={genresArray} setGenresArray={setGenresArray}/>
-            
-    //         <div className="shop-container"> 
-    //         <h5 className="message">{message2}</h5>
-    //         <div className="shop" style={{alignItems: "start"}}>
-           
-    //         </div>
-    //             </div>   
-    //     </div>
-    // )
+
     return (
 
         <div className="mainDealsContainer">
-        <div className="sidebar-container">
+        <div className="sidebar-shader" style={{backgroudColor: "rgb( 255, 255, 255, 0.500)"}}> 
+        <div className="sidebar-container" >
             <Sidebar items={items} searchResult={searchResult} setSearchResult={setSearchResult} genresArray={genresArray} setGenresArray={setGenresArray}/>
         </div>
+        </div>
+
 
         <div className="shop-container"> 
             <h5 className="message">{message2}</h5>
@@ -86,7 +78,9 @@ if(searchResult.length === 0 && genresArray.length > 0) {
           
             gameName = gameName.slice(9)
             return <div className="game-container">
+                    
                     <a href={`https://www.cheapshark.com/redirect?dealID={${item.dealID}}`} key={item.dealID + items.indexOf(item)} className="gameDiv">
+                    <span className="tooltip">Tool Tip!!!</span>
                         <span className="game-title-container"><h5 className="game-title">{item.title}</h5></span>
                         <img className="thumbnail" src={item.thumb} alt="thumbnail"></img>
                         <p className="store-link" style={{color: "white"}}><span className="sale-price">$ {item.salePrice}</span><span  className={`${storeID(item.storeID)}`}></span></p>
@@ -161,9 +155,11 @@ if(searchResult.length > 0) {
       )
 }
   return (
+    
     <div className="mainDealsContainer">
+
         <div className="sidebar-container">
-            <Sidebar items={items} searchResult={searchResult} setSearchResult={setSearchResult} genresArray={genresArray} setGenresArray={setGenresArray}/>
+            <Sidebar items={items} searchResult={searchResult} setSearchResult={setSearchResult} genresArray={genresArray} setGenresArray={setGenresArray} cartDisplay={cartDisplay}/>
         </div>
 
         <div className="shop-container"> 
@@ -179,6 +175,7 @@ if(searchResult.length > 0) {
             gameName = gameName.slice(9)
             return <div className="game-container">
                     <a href={`https://www.cheapshark.com/redirect?dealID={${item.dealID}}`} key={item.dealID + items.indexOf(item)} className="gameDiv">
+                    <span className="tooltip">Tool Tip!!!</span>
                         <span className="game-title-container"><h5 className="game-title">{item.title}</h5></span>
                         <img className="thumbnail" src={item.thumb} alt="thumbnail"></img>
                         <p className="store-link" style={{color: "white"}}><span className="sale-price">$ {item.salePrice}</span><span  className={`${storeID(item.storeID)}`}></span></p>

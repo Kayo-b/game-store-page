@@ -22,6 +22,7 @@ const RouteSwitch = () => {
     const [items, setItems] = useState([])
     const [searchBoxResult, setSearchBoxResult] = useState([]);
     const [isOpen, setIsOpen] = useState(false)
+    const [genresArray, setGenresArray] = useState([])
     const [apiList, setApiList] = useState([
                     'https://www.cheapshark.com/api/1.0/deals?storeID=1&pageNumber=0&sortBy=metacritic',
                     'https://www.cheapshark.com/api/1.0/deals?storeID=7&pageNumber=0&sortBy=metacritic'])
@@ -122,12 +123,14 @@ const RouteSwitch = () => {
                     message={message}
                     searchResult={searchResult} 
                     setSearchResult={setSearchResult}
+                    cartDisplay={cartDisplay}
                     />} />
                 <Route path="/deals/:id" element={<Info />} />
                 {/* <Route path="/cart" element={<Cart shopCart={shopCart}/>} /> */}
                 {/* <Route path="/info" element={<Info />} /> */}
                
             </Routes>
+            
         </BrowserRouter>
         
     )

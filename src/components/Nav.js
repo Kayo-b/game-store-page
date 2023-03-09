@@ -8,7 +8,7 @@ const Nav = ({shopCart, cartDisplay, setCartDisplay, items, searchResult, setSea
 
     function shopCartDisplayOnOff() {
         
-        cartDisplay === 'none' ? setCartDisplay('flex') : setCartDisplay('none')
+        cartDisplay === 'none' ? setCartDisplay('block') : setCartDisplay('none')
     } 
 
     async function searchGameDeal(input) {
@@ -27,6 +27,7 @@ const Nav = ({shopCart, cartDisplay, setCartDisplay, items, searchResult, setSea
     }
     
     return(
+        
         <nav>
             <h3>nav</h3>
              <ul className='nav-links' >

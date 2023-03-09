@@ -108,10 +108,12 @@ const Sidebar = ({items, searchResult, setSearchResult, shopCart, cartDisplay, s
         setSearchResult(tempArr)
     }
 
-    return(<div className="sidebarContainer">
+    return(
+    
+    <div className="sidebarContainer">
 
         <div className="categories">
-
+        
         <h5>Search</h5>
         <div className="searchContainer">
                     <div className="searchElem">
@@ -171,11 +173,14 @@ const Sidebar = ({items, searchResult, setSearchResult, shopCart, cartDisplay, s
             <input type="checkbox" onChange={(e) => e.target.checked ? SetGenreFilter(e.target.value) : removeFromGenreArray(e.target.value)} value="Strategy"></input>
             Strategy
         </label>
-            
+        {console.log(cartDisplay)}
+        <div className="sidebar-shader" style={{display: cartDisplay}}></div>
         </div>
 
 
-    </div>)
+    </div>
+    
+    )
 }
 
 export default Sidebar

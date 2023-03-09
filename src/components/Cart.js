@@ -68,8 +68,8 @@ const Cart = ({shopCart, setCart, cartDisplay, setCartDisplay}) => {
         }
         setCart([...shopCart])
     }
-    return(
-        <div className='shopCartContainer'>
+    return(<div className="shop-cart-background" style={{display: cartDisplay}}>
+            <div className='shopCartContainer'>
             <div className='shopCart' style={{display: cartDisplay}}>
                 <button onClick={() => setCartDisplay('none')}>X</button>
                 <h3>Shopping Cart</h3>
@@ -89,6 +89,8 @@ const Cart = ({shopCart, setCart, cartDisplay, setCartDisplay}) => {
                 <p>Subtotal: ${calculateSubtotal().subtotal} USD</p>
             </div>
         </div>
+    </div>
+        
     )
 }
 export default Cart
