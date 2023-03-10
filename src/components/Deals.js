@@ -174,8 +174,9 @@ if(searchResult.length > 0) {
           
             gameName = gameName.slice(9)
             return <div className="game-container">
+            
                     <a href={`https://www.cheapshark.com/redirect?dealID={${item.dealID}}`} key={item.dealID + items.indexOf(item)} className="gameDiv">
-                    <span className="tooltip">Tool Tip!!!</span>
+                    
                         <span className="game-title-container"><h5 className="game-title">{item.title}</h5></span>
                         <img className="thumbnail" src={item.thumb} alt="thumbnail"></img>
                         <p className="store-link" style={{color: "white"}}><span className="sale-price">$ {item.salePrice}</span><span  className={`${storeID(item.storeID)}`}></span></p>
@@ -191,6 +192,7 @@ if(searchResult.length > 0) {
 
                         
                     </a>
+                    <div className="tooltip-div"> <span className="tooltip" style={{fontSize:"small"}}><img style={{width:"180px", margin:"-2px"}} alt="tooltipScreenshots" src={`${item.screenshots}`}></img>{item.short_description}</span> </div>
                     <button onClick={() => AddToCart(item)} className="add-to-cart-btn">Add to Cart</button>
                     </div>
                    

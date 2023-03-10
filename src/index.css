@@ -149,29 +149,54 @@ nav {
   margin: 0px;
   padding: 0px;
 }
+.tooltip-div {
+  position: relative;
+ 
+}
+
+.tooltip-div .tooltip {
+  visibility: hidden;
+  width: 180px;
+  min-height: 140px;
+  max-height: 340px;
+  background-color: rgba(35, 35, 38, 0.898);
+  color: #fff;
+  text-align: center;
+  padding: 5px;
+  padding-top: 7px;
+  border-radius: 2px;
+  /* transform: translate(-10%, -10%) scale(0.75) rotate(0deg); */
+  /* transition: 0.9s ease-in-out; */
+  transition-delay: 0.5s;
+  top: -107px;
+  right: 70px;
+  position: absolute;
+  z-index: 1;
+  text-align:justify;
+}
+
+.tooltip:before{
+  content:'';
+  display:block;
+  width:0;
+  height:0;
+  position: absolute;
+  border-top: 12px solid transparent;
+  border-bottom: 12px solid transparent; 
+  border-left: 12px solid rgba(35, 35, 38, 0.898);
+  left: 186px;
+  top:20px;
+}
+
+
+.game-container:hover .tooltip {
+  visibility: visible;
+}
+
 
 
 .gameDiv:hover {
   background-color: rgba(149, 149, 149, 0.408);
-}
-
-.gameDiv .tooltip {
-  visibility: hidden;
-  width: 120px;
-  background-color: black;
-  color: #fff;
-  text-align: center;
-  padding: 5px 0;
-  border-radius: 6px;
- 
-  /* Position the tooltip text - see examples below! */
-  position: absolute;
-  z-index: 1;
-}
-
-
-.gameDiv:hover .tooltip {
-  visibility: visible;
 }
 
 .game-title {
@@ -396,6 +421,8 @@ Link {
   position: sticky;
 }
 .game-container {
+  display: flex;
+  flex-direction: column;
   padding: 0px;
   margin: 5px;
   border: 2px solid rgb(77, 97, 117);
@@ -435,4 +462,3 @@ Link {
   padding: 0px;
 
 }
-

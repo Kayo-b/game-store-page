@@ -34,8 +34,17 @@ const RouteSwitch = () => {
             const data = await(await fetch(apiList[x])).json();
             data.map(async item => { 
                 if(item.steamAppID != null) {
+                    let screenShotsArray = [];
                     let steamApiFetch = await(await fetch(`https://salty-citadel-78352.herokuapp.com/https://store.steampowered.com/api/appdetails?appids=${item.steamAppID}`)).json()
-                    item.genres = steamApiFetch[item.steamAppID].data.genres
+                    item.genres = steamApiFetch[item.steamAppID].data.genres;
+                    item.short_description = steamApiFetch[item.steamAppID].data.short_description;
+                    for(let i = 0; i < 3; i++) {
+                        let random = Math.floor(Math.random() * steamApiFetch[item.steamAppID].data.screenshots.length);
+                        screenShotsArray.push(steamApiFetch[item.steamAppID].data.screenshots[random].path_thumbnail);
+                    }
+                    item.screenshots = screenShotsArray;
+                    // item.screenshots = steamApiFetch[item.steamAppID].data.screenshots[random].path_thumbnail;
+                    
                 }
                
         })
@@ -49,7 +58,7 @@ const RouteSwitch = () => {
         const message = allGamesArray.length > 0 ? `${allGamesArray.length} deals found` : 'No deals found';
         setMessage(message);
     }
-
+    console.log(items)
     useEffect(() => {
       async function handleSubmit(){
           await fetchItems();
