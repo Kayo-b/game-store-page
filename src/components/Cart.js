@@ -68,6 +68,8 @@ const Cart = ({shopCart, setCart, cartDisplay, setCartDisplay}) => {
         }
         setCart([...shopCart])
     }
+
+
     return(<div className="shop-cart-background" style={{display: cartDisplay}}>
             <div className='shopCartContainer'>
             <div className='shopCart' style={{display: cartDisplay}}>

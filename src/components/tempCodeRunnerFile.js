@@ -1,3 +1,6 @@
-let test = {name: "blaa"}
-let include = [{name: "blaa"},{name:"zika"}]
-console.log(include.includes({name: "blaa"}))
+   async function screenshotCarousel(x) {
+        setTimeout(() => console.log(x), 1000)
+    }
+
+  
+    screenshotCarousel("aaa")

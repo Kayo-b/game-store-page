@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import RouteSwitch from '../RouteSwitch';
 import SearchResult from './SearchResult'
 
-const Nav = ({shopCart, cartDisplay, setCartDisplay, items, searchResult, setSearchResult, searchBoxResult, setSearchBoxResult, isOpen, setIsOpen}) => {
+const Nav = ({setCart, shopCart, cartDisplay, setCartDisplay, items, searchResult, setSearchResult, searchBoxResult, setSearchBoxResult, isOpen, setIsOpen}) => {
     const [saveInput, setSaveInput] = useState("")
 
     function shopCartDisplayOnOff() {
@@ -29,7 +29,7 @@ const Nav = ({shopCart, cartDisplay, setCartDisplay, items, searchResult, setSea
     return(
         
         <nav>
-            <h3>nav</h3>
+            <div className="store-logo">stem</div>
              <ul className='nav-links' >
                 <Link to='/' style={{textDecoration:'none'}}>
                     <li>Home</li>    
@@ -40,7 +40,7 @@ const Nav = ({shopCart, cartDisplay, setCartDisplay, items, searchResult, setSea
                 <Link to='/about' style={{textDecoration:'none'}}>
                     <li>About</li>    
                 </Link>
-{/* 
+        {/* 
                 <Link >
                     <li className='cartNav' onClick={() => shopCartDisplayOnOff()}>{shopCart.length} Cart</li>    
                 </Link> */}
@@ -48,15 +48,15 @@ const Nav = ({shopCart, cartDisplay, setCartDisplay, items, searchResult, setSea
              </ul>
                 <div className="searchContainer">
                     <div className="searchElem">
-                        <input type="search" className="search"></input>
+                        <input type="search" className="search" style={{backgroundColor:"#14345e", color:"aliceblue"}}></input>
                         <div onClick={ e => searchGameDeal(e.target.parentNode.children[0].value)} className="searchButton"></div>
                         
                     </div>
-                    <SearchResult searchBoxResult={searchBoxResult} setSearchBoxResult={setSearchBoxResult} isOpen={isOpen} setIsOpen={setIsOpen}/>
+                    <SearchResult setCart={setCart} shopCart={shopCart} searchBoxResult={searchBoxResult} setSearchBoxResult={setSearchBoxResult} isOpen={isOpen} setIsOpen={setIsOpen}/>
                 </div>
                 <Link style={{textDecoration:'none'}}>
                     <div className='cartContainer'>
-                        <div className='cartNav' onClick={() => shopCartDisplayOnOff()}>CART [{shopCart.length > 0 ? shopCart.length : "0"}]</div>    
+                        <div className='cartNav'  onClick={() => shopCartDisplayOnOff()}>CART [{shopCart.length > 0 ? shopCart.length : "0"}]</div>    
                     </div>
                 </Link>
         </nav>

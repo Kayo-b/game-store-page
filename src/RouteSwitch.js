@@ -108,6 +108,7 @@ const RouteSwitch = () => {
         <BrowserRouter>
             <Nav 
             shopCart={shopCart} 
+            setCart={setCart}
             cartDisplay={cartDisplay} 
             setCartDisplay={setCartDisplay} 
             items={items} 

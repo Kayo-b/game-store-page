@@ -173,7 +173,6 @@ const Sidebar = ({items, searchResult, setSearchResult, shopCart, cartDisplay, s
             <input type="checkbox" onChange={(e) => e.target.checked ? SetGenreFilter(e.target.value) : removeFromGenreArray(e.target.value)} value="Strategy"></input>
             Strategy
         </label>
-        {console.log(cartDisplay)}
         <div className="sidebar-shader" style={{display: cartDisplay}}></div>
         </div>
 
