@@ -66,6 +66,7 @@ const Shop = ({setCart, shopCart, message, items, searchResult, setSearchResult,
     }
 
    async function screenshotCarousel() {
+    setCarouselIndex(0); 
         if(!intID) {    
             intID = setInterval( () => {
                 if(counter < 2) {
@@ -75,10 +76,11 @@ const Shop = ({setCart, shopCart, message, items, searchResult, setSearchResult,
                     clearInterval(intID);
                     intID = null;
                     counter = 0;
-                    setCarouselIndex(counter);
+                    
                 } 
             }, 2000)    
-        }     
+        }   
+        setCarouselIndex(0); 
     }
 
 if(searchResult.length === 0 && genresArray.length > 0) {
@@ -86,11 +88,11 @@ if(searchResult.length === 0 && genresArray.length > 0) {
     return (
 
         <div className="mainDealsContainer">
-        <div className="sidebar-shader" style={{backgroudColor: "rgb( 255, 255, 255, 0.500)"}}> 
+
         <div className="sidebar-container" >
-            <Sidebar items={items} searchResult={searchResult} setSearchResult={setSearchResult} genresArray={genresArray} setGenresArray={setGenresArray}/>
+            <Sidebar items={items} searchResult={searchResult} setSearchResult={setSearchResult} genresArray={genresArray} setGenresArray={setGenresArray} cartDisplay={cartDisplay}/>
         </div>
-        </div>
+
 
 
         <div className="shop-container"> 
@@ -107,7 +109,6 @@ if(searchResult.length === 0 && genresArray.length > 0) {
             return <div className="game-container" onMouseEnter={() => screenshotCarousel()}>
                     
                     <a href={`https://www.cheapshark.com/redirect?dealID={${item.dealID}}`} key={item.dealID + items.indexOf(item)} className="gameDiv">
-                    <span className="tooltip">Tool Tip!!!</span>
                         <span className="game-title-container"><h5 className="game-title">{item.title}</h5></span>
                         <img className="thumbnail" src={item.thumb} alt="thumbnail"></img>
                         <p className="store-link" style={{color: "white"}}><span className="sale-price">$ {item.salePrice}</span><span  className={`${storeID(item.storeID)}`}></span></p>
@@ -125,10 +126,10 @@ if(searchResult.length === 0 && genresArray.length > 0) {
                     </a>
                     <div className="tooltip-div" >
                         <span className="tooltip" style={{fontSize:"small"}}>
-                            <img style={{width:"210px", margin:"-2px"}} alt={`${screenshot}`} src={`${screenshot[carouselIndex]}`}></img>{item.short_description}
+                            <img style={{width:"230px", margin:"-2px"}} alt={`${screenshot}`} src={`${screenshot[carouselIndex]}`}></img>{item.short_description}
                         </span> 
                     </div>
-                    <button onClick={() => AddToCart(item)} className="add-to-cart-btn">Add to Cart</button>
+                    <button onClick={(e) => AddToCart(item, e)} className="add-to-cart-btn">Add to Cart</button>
                     </div>
                    
             })
@@ -143,9 +144,11 @@ if(searchResult.length > 0) {
     return (
 
         <div className="mainDealsContainer">
+        
         <div className="sidebar-container">
-            <Sidebar items={items} searchResult={searchResult} setSearchResult={setSearchResult} genresArray={genresArray} setGenresArray={setGenresArray}/>
+            <Sidebar items={items} searchResult={searchResult} setSearchResult={setSearchResult} genresArray={genresArray} setGenresArray={setGenresArray} cartDisplay={cartDisplay}/>
         </div>
+        
 
         <div className="shop-container"> 
             <h5 className="message">{message2}</h5>
@@ -180,7 +183,7 @@ if(searchResult.length > 0) {
                             <img style={{width:"230px", margin:"-2px"}} alt={`${screenshot}`} src={`${screenshot[carouselIndex]}`}></img>{item.short_description}
                         </span> 
                     </div>
-                    <button onClick={() => AddToCart(item)}  className="add-to-cart-btn">Add to Cart</button>
+                    <button onClick={(e) => AddToCart(item, e)}  className="add-to-cart-btn">Add to Cart</button>
                     </div>
                    
             })

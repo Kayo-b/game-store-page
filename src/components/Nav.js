@@ -29,16 +29,16 @@ const Nav = ({setCart, shopCart, cartDisplay, setCartDisplay, items, searchResul
     return(
         
         <nav>
-            <div className="store-logo">stem</div>
+            <div className="store-logo"><span style={{fontSize:'medium', color:'rgb(183, 193, 202)'}}>stem</span></div>
              <ul className='nav-links' >
                 <Link to='/' style={{textDecoration:'none'}}>
-                    <li>Home</li>    
+                    <li>HOME</li>    
                 </Link>
                 <Link to='/deals' style={{textDecoration:'none'}}>
-                    <li>Deals</li> 
+                    <li>DEALS</li> 
                 </Link>
                 <Link to='/about' style={{textDecoration:'none'}}>
-                    <li>About</li>    
+                    <li>ABOUT</li>    
                 </Link>
         {/* 
                 <Link >

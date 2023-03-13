@@ -8,9 +8,9 @@ const Sidebar = ({items, searchResult, setSearchResult, shopCart, cartDisplay, s
 
     function removeFromGenreArray(genre) {
         let tempArr = genresArray;
-
+        genre.parentNode.parentNode.style.backgroundColor = "rgba(203, 203, 203, 0.0)"
         tempArr.map(item => {
-            if(item === genre){
+            if(item === genre.value){
                 tempArr.splice(tempArr.indexOf(item), 1)
             }
         })
@@ -21,7 +21,6 @@ const Sidebar = ({items, searchResult, setSearchResult, shopCart, cartDisplay, s
         
             SetGenreFilter()
         }
-
     }
 
     function checkForDouble(newItem) {
@@ -36,11 +35,11 @@ const Sidebar = ({items, searchResult, setSearchResult, shopCart, cartDisplay, s
     function SetGenreFilter(genre) {
        
         let tempGenresArray = genresArray
-
-        if(genre !== undefined) tempGenresArray = tempGenresArray.concat(genre)
-
-                
         
+        if(genre !== undefined){
+            tempGenresArray = tempGenresArray.concat(genre.value)
+            genre.parentNode.parentNode.style.backgroundColor = "rgba(203, 203, 203, 0.478)"
+        }   
         items.map((item) => {
             let count = 0;
 
@@ -49,15 +48,10 @@ const Sidebar = ({items, searchResult, setSearchResult, shopCart, cartDisplay, s
                     for(let x = 0; x < item.genres.length; x++) {
                         for(let k = 0; k < tempGenresArray.length; k++) {
                             if(item.genres[x].description === tempGenresArray[k] && checkForDouble(item) === false) {
-                                
                                 tempArr = tempArr.concat(item);
-                                
-                            }
-                            
+                            }   
                         }        
                     }
-
-                    // if(tempArr.length === 0) 
                 } 
                 else {
                     for(let x = 0; x < item.genres.length; x++) {
@@ -79,16 +73,6 @@ const Sidebar = ({items, searchResult, setSearchResult, shopCart, cartDisplay, s
         setGenresArray(tempGenresArray)
         setSearchResult(tempArr)
     }
-    
-   
-
-    // function checkForDouble(newItem) {
-    //     let result = false;
-    //     tempArr.map(item => {if(newItem.dealID === item.dealID) {
-    //         result = true;
-    //     }})
-    //     return result
-    // }
     
     function searchOnChange(input) {
 
@@ -113,67 +97,86 @@ const Sidebar = ({items, searchResult, setSearchResult, shopCart, cartDisplay, s
     <div className="sidebarContainer">
 
         <div className="categories">
-        
-        <h5>Search</h5>
         <div className="searchContainer">
                     <div className="searchElem">
-                        <input type="search" className="search" onChange={e => searchOnChange(e.target.value)}></input>
+                        <input type="search" style={{backgroundColor:"aliceblue"}} className="search" placeholder='Search by name' onChange={e => searchOnChange(e.target.value)}></input>
                         <div onClick={ e => searchOnChange(e.target.parentNode.children[0].value)} className="searchButton"></div>
                     </div>
                 </div>
-                
-        <h5>Filter By Genre</h5>
-
-        <label>
-            <input type="checkbox" onChange={(e) => e.target.checked ? SetGenreFilter(e.target.value) : removeFromGenreArray(e.target.value)} value="Free to Play"></input>
+        <span style={{fontSize:"small", marginLeft:"5px"}}>Filters</span>
+        <div className="labels-container">
+        <div className="labels"> 
+        <label >
+            <input className="sidebar-check" type="checkbox" onChange={(e) => e.target.checked ? SetGenreFilter(e.target) : removeFromGenreArray(e.target)} value="Free to Play"></input>
             Free to Play
         </label>
+        </div>    
 
+        <div className="labels"> 
         <label>
-            <input type="checkbox" onChange={(e) => e.target.checked ? SetGenreFilter(e.target.value) : removeFromGenreArray(e.target.value)} value="Action"></input>
+            <input type="checkbox" className="sidebar-check" onChange={(e) => e.target.checked ? SetGenreFilter(e.target) : removeFromGenreArray(e.target)} value="Action"></input>
             Action
         </label>
+        </div>  
 
+        <div className="labels"> 
         <label>
-            <input type="checkbox" onChange={(e) => e.target.checked ? SetGenreFilter(e.target.value) : removeFromGenreArray(e.target.value)} value="Adventure"></input>
+            <input type="checkbox" className="sidebar-check" onChange={(e) => e.target.checked ? SetGenreFilter(e.target) : removeFromGenreArray(e.target)} value="Adventure"></input>
             Adventure
         </label>
+        </div>  
 
+        <div className="labels"> 
         <label>
-            <input type="checkbox" onChange={(e) => e.target.checked ? SetGenreFilter(e.target.value) : removeFromGenreArray(e.target.value)} value="Casual"></input>
+            <input type="checkbox" className="sidebar-check" onChange={(e) => e.target.checked ? SetGenreFilter(e.target) : removeFromGenreArray(e.target)} value="Casual"></input>
             Casual
-        </label>
+        </label>    
+        </div>  
 
+        <div className="labels"> 
         <label>
-            <input type="checkbox" onChange={(e) => e.target.checked ? SetGenreFilter(e.target.value) : removeFromGenreArray(e.target.value)} value="Indie"></input>
+            <input type="checkbox" className="sidebar-check" onChange={(e) => e.target.checked ? SetGenreFilter(e.target) : removeFromGenreArray(e.target)} value="Indie"></input>
             Indie
-        </label>
+        </label>   
+        </div>  
 
+        <div className="labels"> 
         <label>
-            <input type="checkbox" onChange={(e) => e.target.checked ? SetGenreFilter(e.target.value) : removeFromGenreArray(e.target.value)} value="RPG"></input>
+            <input type="checkbox" className="sidebar-check" onChange={(e) => e.target.checked ? SetGenreFilter(e.target) : removeFromGenreArray(e.target)} value="RPG"></input>
             RPG
         </label>
+        </div>  
 
+        <div className="labels"> 
         <label>
-            <input type="checkbox" onChange={(e) => e.target.checked ? SetGenreFilter(e.target.value) : removeFromGenreArray(e.target.value)} value="Racing"></input>
+            <input type="checkbox" className="sidebar-check" onChange={(e) => e.target.checked ? SetGenreFilter(e.target) : removeFromGenreArray(e.target)} value="Racing"></input>
             Racing
         </label>
-
+        </div>  
+      
+        <div className="labels"> 
         <label>
-            <input type="checkbox" onChange={(e) => e.target.checked ? SetGenreFilter(e.target.value) : removeFromGenreArray(e.target.value)} value="Simulation"></input>
+            <input type="checkbox" className="sidebar-check" onChange={(e) => e.target.checked ? SetGenreFilter(e.target) : removeFromGenreArray(e.target)} value="Simulation"></input>
             Simulation
-        </label>
-        
+        </label>   
+        </div>  
+
+        <div className="labels"> 
         <label>
-            <input type="checkbox" onChange={(e) => e.target.checked ? SetGenreFilter(e.target.value) : removeFromGenreArray(e.target.value)} value="Sports"></input>
+            <input type="checkbox" className="sidebar-check" onChange={(e) => e.target.checked ? SetGenreFilter(e.target) : removeFromGenreArray(e.target)} value="Sports"></input>
             Sports
-        </label>
-        
+        </label>  
+        </div>     
+
+        <div className="labels"> 
         <label>
-            <input type="checkbox" onChange={(e) => e.target.checked ? SetGenreFilter(e.target.value) : removeFromGenreArray(e.target.value)} value="Strategy"></input>
-            Strategy
+            <input type="checkbox" className="sidebar-check"onChange={(e) => e.target.checked ? SetGenreFilter(e.target) : removeFromGenreArray(e.target)} value="Strategy"></input>
+            Strategy              
         </label>
-        <div className="sidebar-shader" style={{display: cartDisplay}}></div>
+        </div>  
+        </div>
+            <div className="sidebar-shader" style={{display: cartDisplay}}></div>
+
         </div>
 
 

@@ -58,7 +58,6 @@ const RouteSwitch = () => {
         const message = allGamesArray.length > 0 ? `${allGamesArray.length} deals found` : 'No deals found';
         setMessage(message);
     }
-    console.log(items)
     useEffect(() => {
       async function handleSubmit(){
           await fetchItems();
