@@ -7,6 +7,7 @@ import About from "./components/About";
 import Deals from "./components/Deals";
 import Info from "./components/Info";
 import Cart from "./components/Cart";
+import { randomArray } from "./auxFunction";
 import Sidebar from "./components/Sidebar";
 import SearchResult from "./components/SearchResult"
 import { ItemsList } from "./components/Deals";
@@ -24,8 +25,8 @@ const RouteSwitch = () => {
     const [isOpen, setIsOpen] = useState(false)
     const [genresArray, setGenresArray] = useState([])
     const [apiList, setApiList] = useState([
-                    'https://www.cheapshark.com/api/1.0/deals?storeID=1&pageNumber=0&sortBy=metacritic',
-                    'https://www.cheapshark.com/api/1.0/deals?storeID=7&pageNumber=0&sortBy=metacritic'])
+                    'https://www.cheapshark.com/api/1.0/deals?storeID=1&pageNumber=0',
+                    'https://www.cheapshark.com/api/1.0/deals?storeID=7&pageNumber=0'])
 
     async function fetchItems() {
         let allGamesArray = [];
@@ -38,9 +39,9 @@ const RouteSwitch = () => {
                     let steamApiFetch = await(await fetch(`https://salty-citadel-78352.herokuapp.com/https://store.steampowered.com/api/appdetails?appids=${item.steamAppID}`)).json()
                     item.genres = steamApiFetch[item.steamAppID].data.genres;
                     item.short_description = steamApiFetch[item.steamAppID].data.short_description;
-                    for(let i = 0; i < 3; i++) {
-                        let random = Math.floor(Math.random() * steamApiFetch[item.steamAppID].data.screenshots.length);
-                        screenShotsArray.push(steamApiFetch[item.steamAppID].data.screenshots[random].path_thumbnail);
+                    for(let i = 0; i < 4; i++) {
+                        let random = randomArray([], steamApiFetch[item.steamAppID].data.screenshots.length)//Math.floor(Math.random() * steamApiFetch[item.steamAppID].data.screenshots.length);
+                        screenShotsArray.push(steamApiFetch[item.steamAppID].data.screenshots[random[i]].path_thumbnail);
                     }
                     item.screenshots = screenShotsArray;
                     // item.screenshots = steamApiFetch[item.steamAppID].data.screenshots[random].path_thumbnail;
@@ -51,10 +52,10 @@ const RouteSwitch = () => {
             allGamesArray = allGamesArray.concat(data)
         }   
        //const test =  await (await fetch("https://salty-citadel-78352.herokuapp.com/https://store.steampowered.com/api/appdetails?appids=440")).json();
-        
+     
        // /IStoreService/GetAppList/v1/?key=98EAB273BB02586DBC4DDAC476EB3EDD&format=json
    // console.log(test)
-        setItems(allGamesArray)
+        setItems(allGamesArray);
         const message = allGamesArray.length > 0 ? `${allGamesArray.length} deals found` : 'No deals found';
         setMessage(message);
     }
@@ -122,7 +123,7 @@ const RouteSwitch = () => {
             <Cart shopCart={shopCart} setCart={setCart} cartDisplay={cartDisplay} setCartDisplay={setCartDisplay}/>
             {/* <SearchResult searchBoxResult={searchBoxResult} setSearchBoxResult={setSearchBoxResult} isOpen={isOpen} setIsOpen={setIsOpen}/> */}
             <Routes>
-                <Route path="/" element={<App />} />
+                <Route path="/" element={<App items={items}/>} />
                 <Route path="/about" element={<About test={test} />} />
                 <Route path="/deals/" element={
                     <Deals 

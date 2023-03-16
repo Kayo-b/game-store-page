@@ -99,7 +99,7 @@ const Sidebar = ({items, searchResult, setSearchResult, shopCart, cartDisplay, s
         <div className="categories">
         <div className="searchContainer">
                     <div className="searchElem">
-                        <input type="search" style={{backgroundColor:"aliceblue"}} className="search" placeholder='Search by name' onChange={e => searchOnChange(e.target.value)}></input>
+                        <input type="search" style={{backgroundColor:"aliceblue"}} className="search" placeholder='Filter by name' onChange={e => searchOnChange(e.target.value)}></input>
                         <div onClick={ e => searchOnChange(e.target.parentNode.children[0].value)} className="searchButton"></div>
                     </div>
                 </div>

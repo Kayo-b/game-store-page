@@ -73,16 +73,16 @@ const Cart = ({shopCart, setCart, cartDisplay, setCartDisplay}) => {
     return(<div className="shop-cart-background" style={{display: cartDisplay}}>
             <div className='shopCartContainer'>
             <div className='shopCart' style={{display: cartDisplay}}>
-                <button onClick={() => setCartDisplay('none')}>X</button>
+                <button className="cart-buttons" style={{paddingTop:"1px", paddingBottom: "0px"}} onClick={() => setCartDisplay('none')}>X</button>
                 <h3>Shopping Cart</h3>
                 <p>This is a page under construction</p>
                 <ul className="cartList">{shopCart.map(item => 
                     <li key={item.dealID + shopCart.indexOf(item)} className="button-list">
 
-                    <button onClick={() => RemoveFromCard(item)}>x</button>{item.title}
-                    <button onClick={() => AddQuantity(item)}>+</button>
-                    <input className="amoutInput" value={item.quantity} onChange={(e) => SetQuantity(e.target.value, item)}></input>
-                    <button onClick={() => SubtractQuantity(item)}>-</button>
+                    <button className="cart-buttons" onClick={() => RemoveFromCard(item)}>x</button>{item.title}
+                    <button className="cart-buttons" onClick={() => AddQuantity(item)}>+</button>
+                    <input className="amoutInput" style={{borderRadius: "2px", textAlign:"center", fontSize:"medium"}} value={item.quantity} onChange={(e) => SetQuantity(e.target.value, item)}></input>
+                    <button className="cart-buttons" onClick={() => SubtractQuantity(item)}>-</button>
                     </li>
                     )}
                 </ul>

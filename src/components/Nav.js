@@ -48,7 +48,7 @@ const Nav = ({setCart, shopCart, cartDisplay, setCartDisplay, items, searchResul
              </ul>
                 <div className="searchContainer">
                     <div className="searchElem">
-                        <input type="search" className="search" style={{backgroundColor:"#14345e", color:"aliceblue"}}></input>
+                        <input type="search" className="search" placeholder="Find the best deals..."style={{backgroundColor:"#14345e", color:"aliceblue"}}></input>
                         <div onClick={ e => searchGameDeal(e.target.parentNode.children[0].value)} className="searchButton"></div>
                         
                     </div>

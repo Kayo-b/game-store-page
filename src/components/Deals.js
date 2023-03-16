@@ -7,6 +7,7 @@ const Shop = ({setCart, shopCart, message, items, searchResult, setSearchResult,
 
     const[genresArray, setGenresArray] = useState([])
     const[carouselIndex, setCarouselIndex] = useState(0)
+
     const message2 = searchResult.length > 0 ? `${searchResult.length} deals found` : 'No deals found';
     let intID;
     let counter = 0;
@@ -31,7 +32,7 @@ const Shop = ({setCart, shopCart, message, items, searchResult, setSearchResult,
     function changeCartColor(e) {
         let cartNav = document.getElementsByClassName("cartNav")[0]
         cartNav.style.color = "green"
-        setTimeout(() => cartNav.style.color = "aliceblue", 200)
+        setTimeout(() => cartNav.style.color = "aliceblue", 250)
     }
 
     function AddToCart(item, e) {
@@ -65,28 +66,68 @@ const Shop = ({setCart, shopCart, message, items, searchResult, setSearchResult,
 
     }
 
-   async function screenshotCarousel() {
-    setCarouselIndex(0); 
-        if(!intID) {    
-            intID = setInterval( () => {
-                if(counter < 2) {
-                    counter += 1;
-                    setCarouselIndex(counter);
-                } else {
-                    clearInterval(intID);
-                    intID = null;
-                    counter = 0;
+    // function screenshotCarousel() {
+    // console.log("carousel Start")
+    
+    //     if(!intID) {    
+      
+    //         intID = setInterval( () => {
+    //             if(counter < 2) {
+    //                 counter += 1;
+    //                 setCarouselIndex(counter);
+    //             } else {
+    //                 clearInterval(intID);
+    //                 intID = null;
+    //                 counter = 0;
+    //                 setCarouselIndex(0); 
+    //             } 
+    //         }, 2000)    
+    //     }   
+        
+    // }
+
+    // function mouseOverTimer(target) {
+    //     console.log("mouseOver")
+  
+    //         const timer = setTimeout(() => screenshotCarousel(), 2000)
+    //         console.log(target)
+    //         target.onmouseout = () => clearTimeout(timer)
+    // }
+    
+    // function screenshotCarousel() {
+        
+    //     let slideFunction = () => {
+            
+    //         console.log(counter)
+    //         var timeout = setTimeout(() => {
+
+    //             if(counter >= 2) {
+
+    //                 counter = 0
+    //                 setCarouselIndex(counter)
                     
-                } 
-            }, 2000)    
-        }   
-        setCarouselIndex(0); 
-    }
+                    
+    //             } else {
+
+    //                 counter += 1;
+    //                 setCarouselIndex(counter)
+    //                 slideFunction();
+    //             }
+    //             return () => clearTimeout(timeout)
+    //         }, 1000)
+
+
+    //     }
+
+    //     slideFunction()
+        
+
+    // }
 
 if(searchResult.length === 0 && genresArray.length > 0) {
 
     return (
-
+       
         <div className="mainDealsContainer">
 
         <div className="sidebar-container" >
@@ -106,7 +147,7 @@ if(searchResult.length === 0 && genresArray.length > 0) {
             let gameName = `${item.metacriticLink}`
           
             gameName = gameName.slice(9)
-            return <div className="game-container" onMouseEnter={() => screenshotCarousel()}>
+            return <div className="game-container">
                     
                     <a href={`https://www.cheapshark.com/redirect?dealID={${item.dealID}}`} key={item.dealID + items.indexOf(item)} className="gameDiv">
                         <span className="game-title-container"><h5 className="game-title">{item.title}</h5></span>
@@ -126,8 +167,15 @@ if(searchResult.length === 0 && genresArray.length > 0) {
                     </a>
                     <div className="tooltip-div" >
                         <span className="tooltip" style={{fontSize:"small"}}>
-                            <img style={{width:"230px", margin:"-2px"}} alt={`${screenshot}`} src={`${screenshot[carouselIndex]}`}></img>{item.short_description}
-                        </span> 
+                        <div className="carousel">
+                        <div className="slide-track">
+                            <img className="slide" style={{width:"230px"}} alt={`${screenshot}`} src={`${screenshot[0]}`}></img>
+                            <img className="slide" style={{width:"230px"}} alt={`${screenshot}`} src={`${screenshot[1]}`}></img>
+                            <img className="slide" style={{width:"230px"}} alt={`${screenshot}`} src={`${screenshot[2]}`}></img>
+                            <img className="slide" style={{width:"230px"}} alt={`${screenshot}`} src={`${screenshot[3]}`}></img>
+                        </div>    
+                        </div>
+                            <div className="description">{item.short_description}</div>                        </span> 
                     </div>
                     <button onClick={(e) => AddToCart(item, e)} className="add-to-cart-btn">Add to Cart</button>
                     </div>
@@ -161,7 +209,7 @@ if(searchResult.length > 0) {
             let gameName = `${item.metacriticLink}`
           
             gameName = gameName.slice(9)
-            return <div className="game-container" onMouseEnter={() => screenshotCarousel()}>
+            return <div className="game-container">
                     <a href={`https://www.cheapshark.com/redirect?dealID={${item.dealID}}`} key={item.dealID + items.indexOf(item)} className="gameDiv">
                         <span className="game-title-container"><h5 className="game-title">{item.title}</h5></span>
                         <img className="thumbnail" src={item.thumb} alt="thumbnail"></img>
@@ -180,8 +228,15 @@ if(searchResult.length > 0) {
                     </a>
                     <div className="tooltip-div" >
                         <span className="tooltip" style={{fontSize:"small"}}>
-                            <img style={{width:"230px", margin:"-2px"}} alt={`${screenshot}`} src={`${screenshot[carouselIndex]}`}></img>{item.short_description}
-                        </span> 
+                        <div className="carousel">
+                        <div className="slide-track">
+                            <img className="slide" style={{width:"230px"}} alt={`${screenshot}`} src={`${screenshot[0]}`}></img>
+                            <img className="slide" style={{width:"230px"}} alt={`${screenshot}`} src={`${screenshot[1]}`}></img>
+                            <img className="slide" style={{width:"230px"}} alt={`${screenshot}`} src={`${screenshot[2]}`}></img>
+                            <img className="slide" style={{width:"230px"}} alt={`${screenshot}`} src={`${screenshot[3]}`}></img>
+                        </div>    
+                        </div>
+                            <div className="description">{item.short_description}</div>                        </span> 
                     </div>
                     <button onClick={(e) => AddToCart(item, e)}  className="add-to-cart-btn">Add to Cart</button>
                     </div>
@@ -213,7 +268,8 @@ if(searchResult.length > 0) {
            let gameName = `${item.metacriticLink}`
             let screenshot = item.screenshots !== undefined ? item.screenshots : "Unavailable"
             gameName = gameName.slice(9)
-            return <div className="game-container" onMouseEnter={() => screenshotCarousel()}> 
+
+            return <div className="game-container"> 
 
                     <a href={`https://www.cheapshark.com/redirect?dealID={${item.dealID}}`} key={item.dealID + items.indexOf(item)} className="gameDiv">
                     
@@ -232,10 +288,17 @@ if(searchResult.length > 0) {
 
                         
                     </a>
-                   
                     <div className="tooltip-div" >
                         <span className="tooltip" style={{fontSize:"small"}}>
-                            <img style={{width:"230px", margin:"-2px"}} alt={`${screenshot}`} src={`${screenshot[carouselIndex]}`}></img>{item.short_description}
+                        <div className="carousel">
+                        <div className="slide-track">
+                            <img className="slide" style={{width:"230px"}} alt={`${screenshot}`} src={`${screenshot[0]}`}></img>
+                            <img className="slide" style={{width:"230px"}} alt={`${screenshot}`} src={`${screenshot[1]}`}></img>
+                            <img className="slide" style={{width:"230px"}} alt={`${screenshot}`} src={`${screenshot[2]}`}></img>
+                            <img className="slide" style={{width:"230px"}} alt={`${screenshot}`} src={`${screenshot[3]}`}></img>
+                        </div>    
+                        </div>
+                            <div className="description">{item.short_description}</div>
                         </span> 
                     </div>
                     <button onClick={(e) => AddToCart(item, e)} className="add-to-cart-btn">Add to Cart</button>
