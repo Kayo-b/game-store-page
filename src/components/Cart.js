@@ -75,7 +75,6 @@ const Cart = ({shopCart, setCart, cartDisplay, setCartDisplay}) => {
             <div className='shopCart' style={{display: cartDisplay}}>
                 <button className="cart-buttons" style={{paddingTop:"1px", paddingBottom: "0px"}} onClick={() => setCartDisplay('none')}>X</button>
                 <h3>Shopping Cart</h3>
-                <p>This is a page under construction</p>
                 <ul className="cartList">{shopCart.map(item => 
                     <li key={item.dealID + shopCart.indexOf(item)} className="button-list">
 
@@ -86,9 +85,14 @@ const Cart = ({shopCart, setCart, cartDisplay, setCartDisplay}) => {
                     </li>
                     )}
                 </ul>
-                <p>Price without discount: ${calculateSubtotal().noDiscount} USD</p>
+                {shopCart.length === 0 ? "Cart is empty." : 
+                <div>
+                <p>Raw Price: ${calculateSubtotal().noDiscount} USD</p>
                 <p>Discount: ${calculateSubtotal().totalDiscount} USD</p>
                 <p>Subtotal: ${calculateSubtotal().subtotal} USD</p>
+                </div>
+                }
+                
             </div>
         </div>
     </div>

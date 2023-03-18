@@ -25,7 +25,7 @@ const Nav = ({setCart, shopCart, cartDisplay, setCartDisplay, items, searchResul
         
         
     }
-    
+    let reduceQuantity = shopCart.reduce((accumulator, currentValue) => accumulator + currentValue.quantity, 0)
     return(
         
         <nav>
@@ -56,7 +56,8 @@ const Nav = ({setCart, shopCart, cartDisplay, setCartDisplay, items, searchResul
                 </div>
                 <Link style={{textDecoration:'none'}}>
                     <div className='cartContainer'>
-                        <div className='cartNav'  onClick={() => shopCartDisplayOnOff()}>CART [{shopCart.length > 0 ? shopCart.length : "0"}]</div>    
+                    
+                        <div className='cartNav'  onClick={() => shopCartDisplayOnOff()}>CART [{shopCart.length > 0 ? reduceQuantity : "0"}]</div>    
                     </div>
                 </Link>
         </nav>
