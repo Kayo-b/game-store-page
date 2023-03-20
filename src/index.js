@@ -4,6 +4,8 @@ import './index.css';
 import App from './components/App';
 import RouteSwitch from './RouteSwitch';
 import reportWebVitals from './reportWebVitals';
+import './fonts/OptimusPrinceps.ttf'
+import './fonts/OptimusPrincepsSemiBold.ttf'
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

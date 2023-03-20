@@ -25,14 +25,13 @@ const Shop = ({setCart, shopCart, message, items, searchResult, setSearchResult,
             break;
           default:
               return "?"  
-
       }
     }
 
     function changeCartColor(e) {
         let cartNav = document.getElementsByClassName("cartNav")[0]
         cartNav.style.color = "green"
-        setTimeout(() => cartNav.style.color = "aliceblue", 250)
+        setTimeout(() => cartNav.style.color = "aliceblue", 220)
     }
 
     function AddToCart(item, e) {

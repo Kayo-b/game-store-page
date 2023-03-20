@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 
-const Cart = ({shopCart, setCart, cartDisplay, setCartDisplay}) => {
+const Cart = ({shopCart, setCart, cartDisplay, setCartDisplay, cartDisplayTrans, setCartDisplayTrans}) => {
     const [cartContent, setCartContent] = useState('')
     const [subtotal, setSubtotal] = useState(0)
     
@@ -70,17 +70,18 @@ const Cart = ({shopCart, setCart, cartDisplay, setCartDisplay}) => {
     }
 
 
-    return(<div className="shop-cart-background" style={{display: cartDisplay}}>
+    return(<div className="shop-cart-background" style={{visibility: cartDisplay}}>
             <div className='shopCartContainer'>
-            <div className='shopCart' style={{display: cartDisplay}}>
-                <button className="cart-buttons" style={{paddingTop:"1px", paddingBottom: "0px"}} onClick={() => setCartDisplay('none')}>X</button>
+        
+            <div className='shopCart' style={{transform: cartDisplayTrans}}>
+                <button className="cart-buttons" style={{paddingTop:"1px", paddingBottom: "0px"}} onClick={() => {setCartDisplay('hidden'); setCartDisplayTrans('translateX(100%)')}}>X</button>
                 <h3>Shopping Cart</h3>
                 <ul className="cartList">{shopCart.map(item => 
                     <li key={item.dealID + shopCart.indexOf(item)} className="button-list">
 
-                    <button className="cart-buttons" onClick={() => RemoveFromCard(item)}>x</button>{item.title}
+                    <button className="cart-buttons" onClick={() => RemoveFromCard(item)}>x</button><div className="item-title-cart" ><div className="inner-item-title-cart">{item.title}</div></div>
                     <button className="cart-buttons" onClick={() => AddQuantity(item)}>+</button>
-                    <input className="amoutInput" style={{borderRadius: "2px", textAlign:"center", fontSize:"medium"}} value={item.quantity} onChange={(e) => SetQuantity(e.target.value, item)}></input>
+                    <input className="amoutInput" max="99" min="0" style={{borderRadius: "2px", textAlign:"center", fontSize:"medium", minWidth:"20px"}} value={item.quantity} onChange={(e) => SetQuantity(e.target.value, item)}></input>
                     <button className="cart-buttons" onClick={() => SubtractQuantity(item)}>-</button>
                     </li>
                     )}

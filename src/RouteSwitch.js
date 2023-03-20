@@ -16,7 +16,8 @@ import { ItemsList } from "./components/Deals";
 
 const RouteSwitch = () => {
     const [shopCart, setCart] = useState([]);
-    const [cartDisplay, setCartDisplay] = useState('none')
+    const [cartDisplay, setCartDisplay] = useState('hidden')
+    const [cartDisplayTrans, setCartDisplayTrans] = useState('translateX(100%)')
     const [test, setTest] = useState([])
     const [searchResult, setSearchResult] = useState([])
     const [message, setMessage] = useState('');
@@ -77,7 +78,8 @@ const RouteSwitch = () => {
         const closeCart = e => {
             if(e.target.className !== "cartNav" && e.target.parentNode.className !== "shopCart" && e.target.parentNode.className !== "cartList" && e.target.parentNode.className !== "button-list") {
                 if(e.target.parentNode.className !== "shopCartContainer") {
-                    setCartDisplay("none")
+                    setCartDisplay("hidden")
+                    setCartDisplayTrans("translateX(100%)")
                 }
             }
         }
@@ -111,6 +113,8 @@ const RouteSwitch = () => {
             setCart={setCart}
             cartDisplay={cartDisplay} 
             setCartDisplay={setCartDisplay} 
+            cartDisplayTrans={cartDisplayTrans} 
+            setCartDisplayTrans={setCartDisplayTrans} 
             items={items} 
             searchResult={searchResult} 
             setSearchResult={setSearchResult}
@@ -119,8 +123,8 @@ const RouteSwitch = () => {
             isOpen={isOpen}
             setIsOpen={setIsOpen}    
             />
-            
-            <Cart shopCart={shopCart} setCart={setCart} cartDisplay={cartDisplay} setCartDisplay={setCartDisplay}/>
+         
+            <Cart shopCart={shopCart} setCart={setCart} cartDisplay={cartDisplay} setCartDisplay={setCartDisplay} setCartDisplayTrans={setCartDisplayTrans} cartDisplayTrans={cartDisplayTrans} />
             {/* <SearchResult searchBoxResult={searchBoxResult} setSearchBoxResult={setSearchBoxResult} isOpen={isOpen} setIsOpen={setIsOpen}/> */}
             <Routes>
                 <Route path="/" element={<App items={items}/>} />
@@ -134,6 +138,7 @@ const RouteSwitch = () => {
                     searchResult={searchResult} 
                     setSearchResult={setSearchResult}
                     cartDisplay={cartDisplay}
+                    cartDisplayTrans={cartDisplayTrans}
                     />} />
                 <Route path="/deals/:id" element={<Info />} />
                 {/* <Route path="/cart" element={<Cart shopCart={shopCart}/>} /> */}

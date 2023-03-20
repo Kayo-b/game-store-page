@@ -3,12 +3,14 @@ import { Link } from 'react-router-dom'
 import RouteSwitch from '../RouteSwitch';
 import SearchResult from './SearchResult'
 
-const Nav = ({setCart, shopCart, cartDisplay, setCartDisplay, items, searchResult, setSearchResult, searchBoxResult, setSearchBoxResult, isOpen, setIsOpen}) => {
+const Nav = ({setCart, shopCart, cartDisplay, setCartDisplay, cartDisplayTrans, setCartDisplayTrans, items, searchResult, setSearchResult, searchBoxResult, setSearchBoxResult, isOpen, setIsOpen}) => {
     const [saveInput, setSaveInput] = useState("")
 
     function shopCartDisplayOnOff() {
         
-        cartDisplay === 'none' ? setCartDisplay('block') : setCartDisplay('none')
+        cartDisplay === 'hidden' ? setCartDisplay('visible') : setCartDisplay('hidden')
+        cartDisplayTrans === 'translateX(100%)' ? setCartDisplayTrans('translateX(2%)') : setCartDisplayTrans('translateX(100%)')
+        
     } 
 
     async function searchGameDeal(input) {
@@ -57,7 +59,7 @@ const Nav = ({setCart, shopCart, cartDisplay, setCartDisplay, items, searchResul
                 <Link style={{textDecoration:'none'}}>
                     <div className='cartContainer'>
                     
-                        <div className='cartNav'  onClick={() => shopCartDisplayOnOff()}>CART [{shopCart.length > 0 ? reduceQuantity : "0"}]</div>    
+                        <div className='cartNav'  onClick={() => shopCartDisplayOnOff()}>CART [{shopCart.length > 0 ? reduceQuantity : 0}]</div>    
                     </div>
                 </Link>
         </nav>
