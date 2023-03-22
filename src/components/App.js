@@ -45,7 +45,11 @@ function App({items}) {
               <Link to='/deals' style={{zIndex:'1', textDecoration:'none', marginTop: "150px", color: "rgb(188, 187, 208)", border: "2px solid #737d94", borderRadius: "2px", margin: "20px", padding: "5px", width: "150px", height:"30px", paddingTop: "15px"}} onMouseOver={e => e.target.style.backgroundColor = "#4d6175"} onMouseOut={e => e.target.style.backgroundColor = "#4d617500"}>EXPLORE</Link>
               
               <div className="bonfire-container">
-                <span className='darksouls-phrase'>"AND SO IT IS THAT ASH SEEKETH EMBERS..."</span>
+              <div className="phrase-container">
+                <span className='darksouls-phrase1'><span>AND</span> <span>SO</span> <span>IT</span> <span>IS</span> </span>
+                <span className='darksouls-phrase2'><span>THAT</span> <span>ASH</span> </span>
+                <span className='darksouls-phrase3'><span>SEEKETH</span> <span>EMBERS</span><span>...</span></span>
+                </div>
                 <div className="bonfire"></div>
               </div>
              
