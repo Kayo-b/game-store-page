@@ -16,9 +16,18 @@ const Nav = ({setCart, shopCart, cartDisplay, setCartDisplay, cartDisplayTrans, 
     async function searchGameDeal(input) {
         if(input === "") return
         if(saveInput !== input) {
-            let searchGameDeal = await( await fetch(`https://www.cheapshark.com/api/1.0/games?title=${input}&limit=6`)).json()
-            console.log("fetch!")
-            setSearchBoxResult(searchGameDeal)
+            //let searchGameDeal = await( await fetch(`https://www.cheapshark.com/api/1.0/games?title=${input}&limit=6`)).json()
+            let searchGameDeal = fetch(`https://www.cheapshark.com/api/1.0/games?title=${input}&limit=6`)
+            .then(res => {return res.json()})
+            .then(res => {return res})
+            .catch(res => {return res})
+           let fetchResult = await(searchGameDeal)
+          console.log(fetchResult.length)
+          if(fetchResult.length === 0) {
+            setSearchBoxResult(["No results"])
+           
+          } else
+            setSearchBoxResult(fetchResult)
             setSaveInput(input)
         }
 
@@ -50,7 +59,7 @@ const Nav = ({setCart, shopCart, cartDisplay, setCartDisplay, cartDisplayTrans, 
              </ul>
                 <div className="searchContainer">
                     <div className="searchElem">
-                        <input type="search" className="search" placeholder="Find the best deals..."style={{backgroundColor:"#14345e", color:"aliceblue"}}></input>
+                        <input type="search" className="search" placeholder="Find the best deals..." onKeyDown={e => e.key === "Enter" ? searchGameDeal(e.target.value) : () => null}style={{backgroundColor:"#14345e", color:"aliceblue"}}></input>
                         <div onClick={ e => searchGameDeal(e.target.parentNode.children[0].value)} className="searchButton"></div>
                         
                     </div>

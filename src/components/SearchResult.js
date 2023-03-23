@@ -44,6 +44,9 @@ const SearchResult = ({setCart, shopCart,searchBoxResult, setSearchBoxResult, is
         <div className="box-result-main-container">
         <div className={"search-box-result-" + (isOpen ? "open" : "closed")}>
         {searchBoxResult.map(item => {
+            if(item === "No results") {
+                return  <div className="result-box-container" style={{color:"aliceblue", heigh:"100px", padding:"5px"}}> No results </div>
+            }
                 if(item.thumb.includes("https://cdn.cloudflare.steamstatic.com/steam")) {
                     return <div className="result-box-container"> 
                     <button onClick={() => AddToCart(item)} className="add-to-cart-btn-search-box">Add to Cart</button>
@@ -53,7 +56,6 @@ const SearchResult = ({setCart, shopCart,searchBoxResult, setSearchBoxResult, is
                         <img className="thumbnail" src={item.thumb} alt="thumbnail"></img>
                         <span>$ {item.cheapest} USD</span>
                         
-                
                         </div>
                               
                         </a>

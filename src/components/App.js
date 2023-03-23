@@ -1,12 +1,20 @@
 import logo from '/home/kayo-b/the_odin_project/game-store-page/src/logo.svg'
 import '/home/kayo-b/the_odin_project/game-store-page/src/App.css';
 import { Link } from 'react-router-dom'
+import React, {useEffect, useState} from 'react'
 
-function App({items}) {
+function App({items, setRerender}) {
   let count = 0
-  function slideKinght() {
-    document.getElementsByClassName("home-background-img")[0].style.transform = "translateX(80%)"
-  }
+  const [homeRerender, setHomeRerender] = useState(false)
+  // useEffect(() => {
+  //   const rerenders = () => {
+  //   setTimeout(() => setRerender(true), 500);
+  //   setTimeout(() => setHomeRerender(true), 500)
+  // }
+  //   rerenders();
+  //   return() => rerenders
+  // },[])
+  
   return (
     <div className="App">
       <div className="main-home-container">

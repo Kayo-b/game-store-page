@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import Sidebar from './Sidebar'
 import Cart from './Cart';
 
-const Shop = ({setCart, shopCart, message, items, searchResult, setSearchResult, cartDisplay}) => {
+const Shop = ({setCart, shopCart, message, items, searchResult, setSearchResult, cartDisplay, setRerender}) => {
 
     const[genresArray, setGenresArray] = useState([])
     const[carouselIndex, setCarouselIndex] = useState(0)
@@ -122,6 +122,11 @@ const Shop = ({setCart, shopCart, message, items, searchResult, setSearchResult,
         
 
     // }
+
+    useEffect(() => {
+        setTimeout(() => setRerender(true), 1000)
+      },[])
+      
 
 if(searchResult.length === 0 && genresArray.length > 0) {
 

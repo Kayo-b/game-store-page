@@ -19,6 +19,7 @@ const RouteSwitch = () => {
     const [cartDisplay, setCartDisplay] = useState('hidden')
     const [cartDisplayTrans, setCartDisplayTrans] = useState('translateX(100%)')
     const [test, setTest] = useState([])
+    const [rerender, setRerender] = useState(false)
     const [searchResult, setSearchResult] = useState([])
     const [message, setMessage] = useState('');
     const [items, setItems] = useState([])
@@ -34,38 +35,51 @@ const RouteSwitch = () => {
         for(let x = 0; x < apiList.length; x++) {
             console.log("FETCHINGGGGGGGGGGG")
             const data = await(await fetch(apiList[x])).json();
-            data.map(async item => { 
-                if(item.steamAppID != null) {
-                    let screenShotsArray = [];
-                    let steamApiFetch = await(await fetch(`https://salty-citadel-78352.herokuapp.com/https://store.steampowered.com/api/appdetails?appids=${item.steamAppID}`)).json()
-                    item.genres = steamApiFetch[item.steamAppID].data.genres;
-                    item.short_description = steamApiFetch[item.steamAppID].data.short_description;
-                    for(let i = 0; i < 4; i++) {
-                        let random = randomArray([], steamApiFetch[item.steamAppID].data.screenshots.length)//Math.floor(Math.random() * steamApiFetch[item.steamAppID].data.screenshots.length);
-                        screenShotsArray.push(steamApiFetch[item.steamAppID].data.screenshots[random[i]].path_thumbnail);
+            const updatedData = await Promise.all(
+                data.map(async item => { 
+                    if(item.steamAppID != null) {
+                        let screenShotsArray = [];
+                        try {
+                            let steamApiFetch = await fetch(
+                              `https://salty-citadel-78352.herokuapp.com/https://store.steampowered.com/api/appdetails?appids=${item.steamAppID}`
+                            );
+                            if (!steamApiFetch.ok) {
+                              throw new Error(`Fetch failed with status ${steamApiFetch.status}`);
+                            }
+                        let fetchResult = await steamApiFetch.json()
+                        //let steamApiFetch = await( await fetch(`https://salty-citadel-78352.herokuapp.com/https://store.steampowered.com/api/appdetails?appids=${item.steamAppID}`)).json()
+                        item.genres = fetchResult[item.steamAppID].data.genres;
+                        item.short_description = fetchResult[item.steamAppID].data.short_description;
+                        for(let i = 0; i < 4; i++) {
+                            let random = randomArray([], fetchResult[item.steamAppID].data.screenshots.length)
+                            screenShotsArray.push(fetchResult[item.steamAppID].data.screenshots[random[i]].path_thumbnail);
+                        }
+                        item.screenshots = screenShotsArray;
+                    } catch(error) { 
+                        console.log(error)
                     }
-                    item.screenshots = screenShotsArray;
-                    // item.screenshots = steamApiFetch[item.steamAppID].data.screenshots[random].path_thumbnail;
                     
-                }
-               
+                    }
+                    return item
+                
         })
-            allGamesArray = allGamesArray.concat(data)
+        );
+
+            allGamesArray = allGamesArray.concat(updatedData)
+            
         }   
-       //const test =  await (await fetch("https://salty-citadel-78352.herokuapp.com/https://store.steampowered.com/api/appdetails?appids=440")).json();
-     
-       // /IStoreService/GetAppList/v1/?key=98EAB273BB02586DBC4DDAC476EB3EDD&format=json
-   // console.log(test)
+        
         setItems(allGamesArray);
         const message = allGamesArray.length > 0 ? `${allGamesArray.length} deals found` : 'No deals found';
         setMessage(message);
     }
     useEffect(() => {
-      async function handleSubmit(){
-          await fetchItems();
-        }
+    //   async function handleSubmit(){
+    //      fetchItems();
+    //     }
 
-        handleSubmit()
+    //     handleSubmit()
+    fetchItems();
 
         const closeSearchBox = e => {
             if(e.target.parentNode.children[0].value !== "") {
@@ -127,7 +141,7 @@ const RouteSwitch = () => {
             <Cart shopCart={shopCart} setCart={setCart} cartDisplay={cartDisplay} setCartDisplay={setCartDisplay} setCartDisplayTrans={setCartDisplayTrans} cartDisplayTrans={cartDisplayTrans} />
             {/* <SearchResult searchBoxResult={searchBoxResult} setSearchBoxResult={setSearchBoxResult} isOpen={isOpen} setIsOpen={setIsOpen}/> */}
             <Routes>
-                <Route path="/" element={<App items={items}/>} />
+                <Route path="/" element={<App items={items} setRerender={setRerender}/>} />
                 <Route path="/about" element={<About test={test} />} />
                 <Route path="/deals/" element={
                     <Deals 
@@ -139,6 +153,7 @@ const RouteSwitch = () => {
                     setSearchResult={setSearchResult}
                     cartDisplay={cartDisplay}
                     cartDisplayTrans={cartDisplayTrans}
+                    setRerender={setRerender}
                     />} />
                 <Route path="/deals/:id" element={<Info />} />
                 {/* <Route path="/cart" element={<Cart shopCart={shopCart}/>} /> */}

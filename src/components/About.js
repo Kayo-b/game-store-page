@@ -13,12 +13,12 @@ const About = ({test}) => {
             {/* <div className="cheapshark-img"></div> */}
             <div className="cheapshark-about-container">
                 <img alt="cheapshark" src={cheapshark} style={{marginBottom:"-15px", paddingBottom:"0px"}}></img>
-                <p>Sheapshark APIs, for searching all the best deals online.</p>
+                <p>Sheapshark API, for finding the best deals online.</p>
             </div>
 
             <div className="steam-about-container">
                 <img alt="steam" src={steam} style={{width:"350px" , filter:"invert(100%)", margin:"10px", marginBottom:"-11px"}}></img>
-                <p>Steam APIs, for providing all resources on game titles.</p>
+                <p>Steam API, for providing resources on game titles.</p>
             </div>
             </div>
             

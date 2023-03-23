@@ -34,7 +34,7 @@ const Cart = ({shopCart, setCart, cartDisplay, setCartDisplay, cartDisplayTrans,
     // console.log(title)
     // setcartContent(title, price, saving)
 
-    function RemoveFromCard(item) {
+    function RemoveFromCart(item) {
         
         let newShopCart = shopCart
         newShopCart.splice(shopCart.indexOf(item), 1)
@@ -54,7 +54,7 @@ const Cart = ({shopCart, setCart, cartDisplay, setCartDisplay, cartDisplayTrans,
         let newShopCart = shopCart;
         newShopCart[shopCart.indexOf(item)].quantity -= 1;
         if(newShopCart[shopCart.indexOf(item)].quantity === 0) {
-            RemoveFromCard(item)
+            RemoveFromCart(item)
         }
         setCart([...shopCart])
 
@@ -64,7 +64,7 @@ const Cart = ({shopCart, setCart, cartDisplay, setCartDisplay, cartDisplayTrans,
         let newShopCart = shopCart;
         newShopCart[shopCart.indexOf(item)].quantity = value;
         if(value === "0" || value === "") {
-            RemoveFromCard(item)
+            RemoveFromCart(item)
         }
         setCart([...shopCart])
     }
@@ -74,12 +74,12 @@ const Cart = ({shopCart, setCart, cartDisplay, setCartDisplay, cartDisplayTrans,
             <div className='shopCartContainer'>
         
             <div className='shopCart' style={{transform: cartDisplayTrans}}>
-                <button className="cart-buttons" style={{paddingTop:"1px", paddingBottom: "0px"}} onClick={() => {setCartDisplay('hidden'); setCartDisplayTrans('translateX(100%)')}}>X</button>
+                <button className="cart-buttons" style={{paddingTop:"1px", paddingBottom: "0px", border: "1px solid #171a21"}} onClick={() => {setCartDisplay('hidden'); setCartDisplayTrans('translateX(100%)')}}>X</button>
                 <h3>Shopping Cart</h3>
                 <ul className="cartList">{shopCart.map(item => 
                     <li key={item.dealID + shopCart.indexOf(item)} className="button-list">
 
-                    <button className="cart-buttons" onClick={() => RemoveFromCard(item)}>x</button><div className="item-title-cart" ><div className="inner-item-title-cart">{item.title}</div></div>
+                    <button className="cart-buttons" onClick={() => RemoveFromCart(item)}>x</button><div className="item-title-cart" ><div className="inner-item-title-cart">{item.title}</div></div>
                     <button className="cart-buttons" onClick={() => AddQuantity(item)}>+</button>
                     <input className="amoutInput" max="99" min="0" style={{borderRadius: "2px", textAlign:"center", fontSize:"medium", minWidth:"20px"}} value={item.quantity} onChange={(e) => SetQuantity(e.target.value, item)}></input>
                     <button className="cart-buttons" onClick={() => SubtractQuantity(item)}>-</button>
@@ -87,10 +87,10 @@ const Cart = ({shopCart, setCart, cartDisplay, setCartDisplay, cartDisplayTrans,
                     )}
                 </ul>
                 {shopCart.length === 0 ? "Cart is empty." : 
-                <div>
-                <p>Raw Price: ${calculateSubtotal().noDiscount} USD</p>
-                <p>Discount: ${calculateSubtotal().totalDiscount} USD</p>
-                <p>Subtotal: ${calculateSubtotal().subtotal} USD</p>
+                <div style={{color:"#171a21", fontSize:"medium", padding: "0px", margin: "0px"}}>
+                <p style={{height: "7px"}}>Raw Price: ${calculateSubtotal().noDiscount} USD</p>
+                <p style={{height: "7px"}}>Discount:-${calculateSubtotal().totalDiscount} USD</p>
+                <p style={{height: "7px"}}>Subtotal: ${calculateSubtotal().subtotal} USD</p>
                 </div>
                 }
                 
