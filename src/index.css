@@ -1113,11 +1113,25 @@ input[type='checkbox']:checked .labels {
 
 .about {
   color: aliceblue;
+
+  padding: 10px;
+  margin: 10px;
+}
+
+.about-credits-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+
+  align-items: center;
 }
 
 .about-credits {
-  display: flex;
-  justify-content: space-evenly;
+  display: inline-grid;
+
+  grid-template-columns: 600px 400px;
+  grid-template-rows: 300px 300px;
+  
 }
 
 .cheapshark-img {
@@ -1125,4 +1139,10 @@ input[type='checkbox']:checked .labels {
   background-size: 60%;
   width: 250px;
   height: 250px;
+}
+
+.cheapshark-about-container, .steam-about-container, .midjourney-container, .fromsoftware-container {
+
+  width: 450px;
+  height: 300px;
 }

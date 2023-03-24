@@ -69,7 +69,7 @@ const Sidebar = ({items, searchResult, setSearchResult, shopCart, cartDisplay, s
 
             }
         })
-        // tempArr.length > 0 ? setGenresArray(tempGenresArray) : setGenresArray([])
+
         setGenresArray(tempGenresArray)
         setSearchResult(tempArr)
     }
@@ -83,9 +83,6 @@ const Sidebar = ({items, searchResult, setSearchResult, shopCart, cartDisplay, s
                 if(item.title.toLowerCase().includes(input.toLowerCase()) && checkForDouble(item) === false) {
                     
                     tempArr = tempArr.concat(item)
-                    // let temp = searchResult
-                    
-                    // setSearchResult([...searchResult, item])
                 }
             })
         }

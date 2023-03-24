@@ -65,67 +65,10 @@ const Shop = ({setCart, shopCart, message, items, searchResult, setSearchResult,
 
     }
 
-    // function screenshotCarousel() {
-    // console.log("carousel Start")
-    
-    //     if(!intID) {    
-      
-    //         intID = setInterval( () => {
-    //             if(counter < 2) {
-    //                 counter += 1;
-    //                 setCarouselIndex(counter);
-    //             } else {
-    //                 clearInterval(intID);
-    //                 intID = null;
-    //                 counter = 0;
-    //                 setCarouselIndex(0); 
-    //             } 
-    //         }, 2000)    
-    //     }   
-        
-    // }
 
-    // function mouseOverTimer(target) {
-    //     console.log("mouseOver")
-  
-    //         const timer = setTimeout(() => screenshotCarousel(), 2000)
-    //         console.log(target)
-    //         target.onmouseout = () => clearTimeout(timer)
-    // }
-    
-    // function screenshotCarousel() {
-        
-    //     let slideFunction = () => {
-            
-    //         console.log(counter)
-    //         var timeout = setTimeout(() => {
-
-    //             if(counter >= 2) {
-
-    //                 counter = 0
-    //                 setCarouselIndex(counter)
-                    
-                    
-    //             } else {
-
-    //                 counter += 1;
-    //                 setCarouselIndex(counter)
-    //                 slideFunction();
-    //             }
-    //             return () => clearTimeout(timeout)
-    //         }, 1000)
-
-
-    //     }
-
-    //     slideFunction()
-        
-
-    // }
-
-    useEffect(() => {
-        setTimeout(() => setRerender(true), 1000)
-      },[])
+    // useEffect(() => {
+    //     setTimeout(() => setRerender(true), 1000)
+    //   },[])
       
 
 if(searchResult.length === 0 && genresArray.length > 0) {

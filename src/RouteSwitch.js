@@ -47,12 +47,15 @@ const RouteSwitch = () => {
                               throw new Error(`Fetch failed with status ${steamApiFetch.status}`);
                             }
                         let fetchResult = await steamApiFetch.json()
-                        //let steamApiFetch = await( await fetch(`https://salty-citadel-78352.herokuapp.com/https://store.steampowered.com/api/appdetails?appids=${item.steamAppID}`)).json()
                         item.genres = fetchResult[item.steamAppID].data.genres;
                         item.short_description = fetchResult[item.steamAppID].data.short_description;
                         for(let i = 0; i < 4; i++) {
-                            let random = randomArray([], fetchResult[item.steamAppID].data.screenshots.length)
-                            screenShotsArray.push(fetchResult[item.steamAppID].data.screenshots[random[i]].path_thumbnail);
+                            let random = randomArray([], fetchResult[item.steamAppID]
+                                .data.screenshots.length
+                                );
+                            screenShotsArray.push(fetchResult[item.steamAppID].data.screenshots[random[i]]
+                                .path_thumbnail
+                                );
                         }
                         item.screenshots = screenShotsArray;
                     } catch(error) { 
@@ -74,12 +77,8 @@ const RouteSwitch = () => {
         setMessage(message);
     }
     useEffect(() => {
-    //   async function handleSubmit(){
-    //      fetchItems();
-    //     }
 
-    //     handleSubmit()
-    fetchItems();
+     fetchItems();
 
         const closeSearchBox = e => {
             if(e.target.parentNode.children[0].value !== "") {
@@ -108,17 +107,6 @@ const RouteSwitch = () => {
 
     }, [])  
 
-    // useEffect(() => {
-    //     const dataFetch = async() => {
-    //         const data = await fetch('https://jsonplaceholder.typicode.com/todos/3')
-    //         .then(response => response.json())
-    //         .then(json => json)
-
-    //         setTest([...test, data])
-    //     }
-        
-    //     dataFetch()
-    // },[])
 
     return(
         <BrowserRouter>
@@ -139,7 +127,6 @@ const RouteSwitch = () => {
             />
          
             <Cart shopCart={shopCart} setCart={setCart} cartDisplay={cartDisplay} setCartDisplay={setCartDisplay} setCartDisplayTrans={setCartDisplayTrans} cartDisplayTrans={cartDisplayTrans} />
-            {/* <SearchResult searchBoxResult={searchBoxResult} setSearchBoxResult={setSearchBoxResult} isOpen={isOpen} setIsOpen={setIsOpen}/> */}
             <Routes>
                 <Route path="/" element={<App items={items} setRerender={setRerender}/>} />
                 <Route path="/about" element={<About test={test} />} />
@@ -156,8 +143,6 @@ const RouteSwitch = () => {
                     setRerender={setRerender}
                     />} />
                 <Route path="/deals/:id" element={<Info />} />
-                {/* <Route path="/cart" element={<Cart shopCart={shopCart}/>} /> */}
-                {/* <Route path="/info" element={<Info />} /> */}
                
             </Routes>
             
