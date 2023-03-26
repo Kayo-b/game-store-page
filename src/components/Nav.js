@@ -14,24 +14,31 @@ const Nav = ({setCart, shopCart, cartDisplay, setCartDisplay, cartDisplayTrans, 
     } 
 
     async function searchGameDeal(input) {
+        
         if(input === "") return
         if(saveInput !== input) {
-            //let searchGameDeal = await( await fetch(`https://www.cheapshark.com/api/1.0/games?title=${input}&limit=6`)).json()
             let searchGameDeal = fetch(`https://www.cheapshark.com/api/1.0/games?title=${input}&limit=6`)
-            .then(res => {return res.json()})
-            .then(res => {return res})
-            .catch(res => {return res})
+            .then(res => {
+                return res.json()
+            })
+            .then(res => {
+                return res
+            })
+            .catch(res => {
+                return res
+            });
            let fetchResult = await(searchGameDeal)
-          console.log(fetchResult.length)
           if(fetchResult.length === 0) {
             setSearchBoxResult(["No results"])
            
-          } else
+          } else {
             setSearchBoxResult(fetchResult)
             setSaveInput(input)
+          }
+
         }
 
-            !isOpen ? setIsOpen(true) : console.log("do nothing")
+            !isOpen ? setIsOpen(true) : setIsOpen(true)
         
         
         
@@ -51,15 +58,11 @@ const Nav = ({setCart, shopCart, cartDisplay, setCartDisplay, cartDisplayTrans, 
                 <Link to='/about' style={{textDecoration:'none'}}>
                     <li>ABOUT</li>    
                 </Link>
-        {/* 
-                <Link >
-                    <li className='cartNav' onClick={() => shopCartDisplayOnOff()}>{shopCart.length} Cart</li>    
-                </Link> */}
 
              </ul>
                 <div className="searchContainer">
                     <div className="searchElem">
-                        <input type="search" className="search" placeholder="Find the best deals..." onKeyDown={e => e.key === "Enter" ? searchGameDeal(e.target.value) : () => null}style={{backgroundColor:"#14345e", color:"aliceblue"}}></input>
+                        <input type="search" className="search" placeholder="Find the best deals..." onKeyDown={e => e.key === "Enter" ? searchGameDeal(e.target.value) : () => null} style={{backgroundColor:"#14345e", color:"aliceblue"}}></input>
                         <div onClick={ e => searchGameDeal(e.target.parentNode.children[0].value)} className="searchButton"></div>
                         
                     </div>

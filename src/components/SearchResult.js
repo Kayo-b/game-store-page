@@ -5,7 +5,7 @@ const SearchResult = ({setCart, shopCart,searchBoxResult, setSearchBoxResult, is
     function changeCartColor() {
         let cartNav = document.getElementsByClassName("cartNav")[0]
         cartNav.style.color = "green"
-        setTimeout(() => cartNav.style.color = "aliceblue", 250)
+        setTimeout(() => cartNav.style.color = "aliceblue", 275)
     }
     
     function AddToCart(item) {

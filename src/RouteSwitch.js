@@ -26,6 +26,7 @@ const RouteSwitch = () => {
     const [searchBoxResult, setSearchBoxResult] = useState([]);
     const [isOpen, setIsOpen] = useState(false)
     const [genresArray, setGenresArray] = useState([])
+    const [loading, setLoading] = useState("")
     const [apiList, setApiList] = useState([
                     'https://www.cheapshark.com/api/1.0/deals?storeID=1&pageNumber=0',
                     'https://www.cheapshark.com/api/1.0/deals?storeID=7&pageNumber=0'])
@@ -35,6 +36,8 @@ const RouteSwitch = () => {
         for(let x = 0; x < apiList.length; x++) {
             console.log("FETCHINGGGGGGGGGGG")
             const data = await(await fetch(apiList[x])).json();
+            setItems(data)
+      
             const updatedData = await Promise.all(
                 data.map(async item => { 
                     if(item.steamAppID != null) {
@@ -72,8 +75,8 @@ const RouteSwitch = () => {
             
         }   
         
-        setItems(allGamesArray);
-        const message = allGamesArray.length > 0 ? `${allGamesArray.length} deals found` : 'No deals found';
+        // setItems(allGamesArray);
+        const message = items.length > 0 ? `${items.length} deals found` : 'No deals found';
         setMessage(message);
     }
     useEffect(() => {
@@ -128,7 +131,7 @@ const RouteSwitch = () => {
          
             <Cart shopCart={shopCart} setCart={setCart} cartDisplay={cartDisplay} setCartDisplay={setCartDisplay} setCartDisplayTrans={setCartDisplayTrans} cartDisplayTrans={cartDisplayTrans} />
             <Routes>
-                <Route path="/" element={<App items={items} setRerender={setRerender}/>} />
+                <Route path="/" element={<App items={items} setRerender={setRerender} loading={loading} setLoading={setLoading}/>} />
                 <Route path="/about" element={<About test={test} />} />
                 <Route path="/deals/" element={
                     <Deals 

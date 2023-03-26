@@ -8,11 +8,11 @@ const About = ({test}) => {
     return(
         <div className="about">
             <div style={{paddingLeft:"40px", display:"flex", justifyContent:"center"}}>
-            <p>This page was created for learning purposes.</p>
+            <p>This website was created as a learning project and is intended for educational purposes only. The content and information presented on this site should not be considered as having any commercial validity.</p>
             
            
             </div>
-            <div style={{display:"flex", justifyContent:"center",alignItems:"center"}}><h4>Credits</h4></div>
+            <div style={{display:"flex", justifyContent:"center",alignItems:"center"}}><h4>Credits:</h4></div>
 
 
             <div className="about-credits-container ">
@@ -26,7 +26,7 @@ const About = ({test}) => {
 
             <div className="steam-about-container">
                 <img alt="steam" src={steam} style={{width:"350px" , filter:"invert(100%)", margin:"10px", marginTop:"-3px"}}></img>
-                <p>Steam API, for providing resources on game titles.</p>
+                <p style={{paddingTop:"5px", marginTop:"3px"}}>Steam API, for providing resources on game titles.</p>
             </div>
             
            

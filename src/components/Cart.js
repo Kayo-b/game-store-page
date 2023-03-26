@@ -60,22 +60,23 @@ const Cart = ({shopCart, setCart, cartDisplay, setCartDisplay, cartDisplayTrans,
         
             <div className='shopCart' style={{transform: cartDisplayTrans}}>
                 <button className="cart-buttons" style={{paddingTop:"1px", paddingBottom: "0px", border: "1px solid #171a21"}} onClick={() => {setCartDisplay('hidden'); setCartDisplayTrans('translateX(100%)')}}>X</button>
-                <h5>SHOPPING CART</h5>
+                <h4>SHOPPING CART</h4>
                 <ul className="cartList">{shopCart.map(item => 
                     <li key={item.dealID + shopCart.indexOf(item)} className="button-list">
 
                     <button className="cart-buttons" onClick={() => RemoveFromCart(item)}>x</button><div className="item-title-cart" ><div className="inner-item-title-cart">{item.title}</div></div>
                     <button className="cart-buttons" onClick={() => AddQuantity(item)}>+</button>
-                    <input className="amoutInput" max="99" min="0" style={{borderRadius: "2px", textAlign:"center", fontSize:"medium", minWidth:"20px"}} value={item.quantity} onChange={(e) => SetQuantity(e.target.value, item)}></input>
+                    <input className="amoutInput" max="99" min="0" style={{borderRadius: "2px", textAlign:"center", fontSize:"medium", minWidth:"20px"}} value={item.quantity} onChange={(e) => SetQuantity(e.target.value, item)} readOnly></input>
                     <button className="cart-buttons" onClick={() => SubtractQuantity(item)}>-</button>
                     </li>
                     )}
                 </ul>
-                {shopCart.length === 0 ? "Cart is empty." : 
-                <div style={{color:"black", fontSize:"medium", padding: "0px", margin: "0px"}}>
-                <p style={{height: "7px"}}>Raw Price: ${calculateSubtotal().noDiscount} USD</p>
-                <p style={{height: "7px"}}>Discount:-${calculateSubtotal().totalDiscount} USD</p>
-                <p style={{height: "7px"}}>Subtotal: ${calculateSubtotal().subtotal} USD</p>
+                {shopCart.length === 0 ? <h5 style={{color:"aliceblue"}}>CART IS EMPTY</h5> : 
+                <div style={{color:"black", fontSize:"medium", display:"block", marginRight:"10px"}}>
+                    <p style={{height: "7px", textAlign: "right"}}>Regular Price: ${calculateSubtotal().noDiscount} USD</p>
+                    <p style={{height: "7px", textAlign: "right"}}>You save: ${calculateSubtotal().totalDiscount} USD</p>
+                    <p style={{height: "7px", textAlign: "right"}}>Subtotal: ${calculateSubtotal().subtotal} USD</p>
+                
                 </div>
                 }
                 

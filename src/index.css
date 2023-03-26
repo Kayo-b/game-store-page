@@ -14,10 +14,6 @@ body {
   margin: 0;
   min-height: 100vh;
   background-image:linear-gradient(100deg, #24384e, black);
-  
-  /* font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif; */
     font-family: "Motiva Sans", Sans-serif;
     font-weight:200px;
   -webkit-font-smoothing: antialiased;
@@ -619,10 +615,6 @@ nav {
 }
 
 .slides-container {
-
-  /* display: grid;
-  grid-template-columns: 4fr 4fr 4fr 4fr 4fr 4fr 4fr  ;
-  grid-template-rows: 4fr 4fr 4fr ; */
   display: block;
   position: relative;
   width: 240px;
@@ -630,31 +622,27 @@ nav {
 
 }
 
-.slides-container {
-  filter: grayscale(100%)
-}
-.slides-container:hover {
-  filter: grayscale(0%)
-}
-
 @keyframes homeCarouselFade {
   0%   {opacity:1}
+  10%   {opacity:0}
+  20%   {opacity:0}
   45%  {opacity:0}
   55%  {opacity:0}
   65%  {opacity:0}
   80% {opacity:0}
+
 }
 
 .home-slide-track>*:nth-child(odd)>:nth-child(1) {
   display: flex;
   position: absolute;
-  animation: homeCarouselFade 25s 4s infinite;
+  animation: homeCarouselFade 25s 14s infinite;
 }
 
 .home-slide-track>*:nth-child(even)>:nth-child(1) {
   display: flex;
   position: absolute;
-  animation: homeCarouselFade 25s 5s infinite;
+  animation: homeCarouselFade 25s 15s infinite;
 }
 
 .home-slide-track>*:nth-child(odd)>:nth-child(2) {
@@ -672,62 +660,14 @@ nav {
 .home-slide-track>*:nth-child(odd)>:nth-child(3){
     display:flex; 
     position:absolute; 
-    animation : homeCarouselFade 25s 14s infinite ; 
+    animation : homeCarouselFade 25s 4s infinite ; 
 }
 
 .home-slide-track>*:nth-child(even)>:nth-child(3){
     display:flex; 
     position:absolute; 
-    animation : homeCarouselFade 25s 15s infinite ; 
+    animation : homeCarouselFade 25s 5s infinite ; 
 }
-
- 
-/* .home-slide-track>*:nth-child(odd)>:nth-child(0) {
-  display: flex;
-  position: absolute;
-  animation: homeCarouselFade 15s 1s infinite;
-
-}
-.home-slide-track>*:nth-child(even)>:nth-child(0) {
-  display: flex;
-  position: absolute;
-  animation: homeCarouselFade 15s 2s infinite;
-
-}   */
-/* .slides-container>*:nth-child(1) {
-  display: flex;
-  position: absolute;
-  animation: fade1 15s 1s infinite;
-  
-} */
-/*
-.slides-container>*:nth-child(2) {
-  display: flex;
-  position: absolute;
-  animation: fade2 20s 3s infinite;
-}
-
-.slides-container>*:nth-child(3) {
-  display: flex;
-  position: absolute;
-  animation: fade3 20s 5s infinite;
-}
-
-.slides-container>*:nth-child(4) {
-  display: flex;
-  position: absolute;
-  animation: fade4 20s 7s infinite;
-} */
-/* .home-slide-track>*:nth-child(3) {
-  display: flex;
-  animation: homeCarousel 30s 1s linear infinite;
-
-}
-.home-slide-track>*:nth-child(4) {
-  display: flex;
-  animation: homeCarousel 30s 1s linear infinite;
-
-} */
 
 
 
@@ -740,40 +680,11 @@ nav {
   
 }
 
-
-/* @keyframes homeCarousel {
-  90% {
-    transform: translateX(-30000px);
-  
-  }
-} */
-
 @keyframes homeCarousel {
   
   100% {
      transform: translateX(-100%); }
 }
-
-/* @keyframes homeCarouselFade2 {
-
-  0%   {opacity:0}
-  20%  {opacity:0}
-  40%  {opacity:1}
-
-
-
-}
-
-@keyframes homeCarouselFade3 {
-
-  0%   {opacity:0}
-  20%  {opacity:0}
-  40%  {opacity:0}
-  50%  {opacity:1}
-
-
-}
- */
 
 .gameDiv:hover {
   background-color: rgba(149, 149, 149, 0.408);
@@ -790,14 +701,6 @@ nav {
   margin-right: 3px;
 }
 
-/* .imag-container {
-  display: flex;
-  align-items: center;
-  max-width: 20vh;
-  max-height: 20vh;
-  border: 1px solid red;
-  
-} */
 
 .img, .img_add {
   max-width: 40vh;
@@ -978,13 +881,8 @@ input[type='checkbox']:hover {
 
 .sidebar-check:checked {
   -webkit-filter: invert(100%);
-  /* -webkit-filter: hue-rotate(var(195deg, 360deg)); */
 
 }
-/* 
-input[type='checkbox']:checked .labels {
-  background-color:rgba(203, 203, 203, 0.478) ;
-} */
 .box-result-main-container {
   display: flex;
   width: 350px;
@@ -1129,7 +1027,7 @@ input[type='checkbox']:checked .labels {
 .about-credits {
   display: inline-grid;
 
-  grid-template-columns: 600px 400px;
+  grid-template-columns: 450px 350px;
   grid-template-rows: 300px 300px;
   
 }
