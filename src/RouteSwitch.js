@@ -37,7 +37,7 @@ const RouteSwitch = () => {
             console.log("FETCHINGGGGGGGGGGG")
             const data = await(await fetch(apiList[x])).json();
             setItems(data)
-      
+            console.log(data)
             const updatedData = await Promise.all(
                 data.map(async item => { 
                     if(item.steamAppID != null) {
@@ -70,12 +70,12 @@ const RouteSwitch = () => {
                 
         })
         );
-
+            console.log(updatedData)
             allGamesArray = allGamesArray.concat(updatedData)
             
         }   
         
-        // setItems(allGamesArray);
+        setItems(allGamesArray);
         const message = items.length > 0 ? `${items.length} deals found` : 'No deals found';
         setMessage(message);
     }

@@ -92,7 +92,7 @@ const Sidebar = ({items, searchResult, setSearchResult, shopCart, cartDisplay, s
     return(
     
     <div className="sidebarContainer">
-
+        
         <div className="categories">
         <div className="searchContainer">
                     <div className="searchElem">

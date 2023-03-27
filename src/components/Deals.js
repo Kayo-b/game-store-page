@@ -76,7 +76,8 @@ if(searchResult.length === 0 && genresArray.length > 0) {
     return (
        
         <div className="mainDealsContainer">
-
+        <label className="filter-show-label" htmlFor="filter-show">FILTERS</label>
+        <input type="checkbox" className="filter-show" id="filter-show"></input>
         <div className="sidebar-container" >
             <Sidebar items={items} searchResult={searchResult} setSearchResult={setSearchResult} genresArray={genresArray} setGenresArray={setGenresArray} cartDisplay={cartDisplay}/>
         </div>
@@ -139,7 +140,8 @@ if(searchResult.length > 0) {
     return (
 
         <div className="mainDealsContainer">
-        
+         <label className="filter-show-label" htmlFor="filter-show">FILTERS</label>
+        <input type="checkbox" className="filter-show" id="filter-show" placeholder="filters"></input>
         <div className="sidebar-container">
             <Sidebar items={items} searchResult={searchResult} setSearchResult={setSearchResult} genresArray={genresArray} setGenresArray={setGenresArray} cartDisplay={cartDisplay}/>
         </div>
@@ -199,8 +201,10 @@ if(searchResult.length > 0) {
   return (
     
     <div className="mainDealsContainer">
-
+        <label className="filter-show-label" for="filter-show">FILTERS</label>
+        <input type="checkbox" className="filter-show" id="filter-show" placeholder="filters"></input>
         <div className="sidebar-container">
+       
             <Sidebar items={items} searchResult={searchResult} setSearchResult={setSearchResult} genresArray={genresArray} setGenresArray={setGenresArray} cartDisplay={cartDisplay}/>
         </div>
 

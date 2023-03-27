@@ -15,7 +15,7 @@ const Info = () => {
 
     const fetchItem = async() => {
         const fetchItem = await fetch(
-            `https://api.rawg.io/api/games/${name}?key=61dfdbccb6ec4b6088ca3f707f739cdb`,
+            `https://api.rawg.io/api/games/${name}?key=`,
             {method:'GET'}
         );
         const item = await fetchItem.json()
