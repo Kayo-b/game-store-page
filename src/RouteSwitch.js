@@ -41,7 +41,7 @@ const RouteSwitch = () => {
                         let screenShotsArray = [];
                         try {
                             let steamApiFetch = await fetch(
-                              `https://salty-citadel-78352.herokuapp.com/https://store.steampowered.com/api/appdetails?appids=${item.steamAppID}`
+                              `https://store.steampowered.com/api/appdetails?appids=${item.steamAppID}`
                             );
                             if (!steamApiFetch.ok) {
                               throw new Error(`Fetch failed with status ${steamApiFetch.status}`);
