@@ -3,14 +3,12 @@ import { Link, useNavigate } from 'react-router-dom';
 import Sidebar from './Sidebar'
 import Cart from './Cart';
 
-const Shop = ({setCart, shopCart, message, items, searchResult, setSearchResult, cartDisplay, setRerender}) => {
+const Shop = ({setCart, shopCart, message, items, searchResult, setSearchResult, cartDisplay}) => {
 
     const[genresArray, setGenresArray] = useState([])
-    const[carouselIndex, setCarouselIndex] = useState(0)
 
     const message2 = searchResult.length > 0 ? `${searchResult.length} deals found` : 'No deals found';
-    let intID;
-    let counter = 0;
+
 
     function storeID(id) {
       switch(id){
@@ -64,11 +62,6 @@ const Shop = ({setCart, shopCart, message, items, searchResult, setSearchResult,
         }
 
     }
-
-
-    // useEffect(() => {
-    //     setTimeout(() => setRerender(true), 1000)
-    //   },[])
       
 
 if(searchResult.length === 0 && genresArray.length > 0) {
@@ -101,16 +94,6 @@ if(searchResult.length === 0 && genresArray.length > 0) {
                         <span className="game-title-container"><h5 className="game-title">{item.title}</h5></span>
                         <img className="thumbnail" src={item.thumb} alt="thumbnail"></img>
                         <p className="store-link" style={{color: "white"}}><span className="sale-price">$ {item.salePrice}</span><span  className={`${storeID(item.storeID)}`}></span></p>
-{/*                     
-                        <a href={`https://www.cheapshark.com/redirect?dealID={${item.dealID}}`}>
-
-                            <p className="store-link" style={{color: "white"}}>Get it on {storeID(item.storeID)}</p>
-
-                        </a> */}
-                        {/* <Link to={`/deals/${gameName}`} state={{name: gameName}}>
-                            <div className="info" style={{color: "white"}}>+Info</div>
-                        </Link> */}
-
                         
                     </a>
                     <div className="tooltip-div" >
@@ -163,16 +146,6 @@ if(searchResult.length > 0) {
                         <span className="game-title-container"><h5 className="game-title">{item.title}</h5></span>
                         <img className="thumbnail" src={item.thumb} alt="thumbnail"></img>
                         <p className="store-link" style={{color: "white"}}><span className="sale-price">$ {item.salePrice}</span><span  className={`${storeID(item.storeID)}`}></span></p>
-{/*                     
-                        <a href={`https://www.cheapshark.com/redirect?dealID={${item.dealID}}`}>
-
-                            <p className="store-link" style={{color: "white"}}>Get it on {storeID(item.storeID)}</p>
-
-                        </a> */}
-                        {/* <Link to={`/deals/${gameName}`} state={{name: gameName}}>
-                            <div className="info" style={{color: "white"}}>+Info</div>
-                        </Link> */}
-
                         
                     </a>
                     <div className="tooltip-div" >
@@ -201,7 +174,7 @@ if(searchResult.length > 0) {
   return (
     
     <div className="mainDealsContainer">
-        <label className="filter-show-label" for="filter-show">FILTERS</label>
+        <label className="filter-show-label" htmlFor="filter-show">FILTERS</label>
         <input type="checkbox" className="filter-show" id="filter-show" placeholder="filters"></input>
         <div className="sidebar-container">
        
@@ -212,8 +185,7 @@ if(searchResult.length > 0) {
             <h5 className="message">{message}</h5>
         <div className="shop">
     
-    
-        
+
         {items?.map(item => { 
           
            let gameName = `${item.metacriticLink}`
@@ -227,16 +199,6 @@ if(searchResult.length > 0) {
                         <span className="game-title-container"><h5 className="game-title">{item.title}</h5></span>
                         <img className="thumbnail" src={item.thumb} alt="thumbnail"></img>
                         <p className="store-link" style={{color: "white"}}><span className="sale-price">$ {item.salePrice}</span><span  className={`${storeID(item.storeID)}`}></span></p>
-{/*                     
-                        <a href={`https://www.cheapshark.com/redirect?dealID={${item.dealID}}`}>
-
-                            <p className="store-link" style={{color: "white"}}>Get it on {storeID(item.storeID)}</p>
-
-                        </a> */}
-                        {/* <Link to={`/deals/${gameName}`} state={{name: gameName}}>
-                            <div className="info" style={{color: "white"}}>+Info</div>
-                        </Link> */}
-
                         
                     </a>
                     <div className="tooltip-div" >

@@ -5,13 +5,12 @@ import React, {useEffect, useState} from 'react'
 import midjourney from '../svg/midjourney.gif'
 
 
-function App({items, setRerender, loading, setLoading}) {
+function App({items, loading, setLoading}) {
   let count = 0
-  const [homeRerender, setHomeRerender] = useState(false)
 
   useEffect(() => {
     const loadingFunc = () => {
-      for(let x = 1; x < 72; x++) {
+      for(let x = 1; x < 76; x++) {
         setTimeout(() => {setLoading(prevLoading => prevLoading + "▮")}, x * 320)
       }
     }
@@ -23,13 +22,10 @@ function App({items, setRerender, loading, setLoading}) {
     <div className="App">
       <div className="main-home-container">
         <div className="home-carousel"> 
-        {loading.length < 72 ? <div className='loading'> LOADING<div style={{color:"green", display:"flex", width:"650px"}}> {loading} </div></div> : ""} 
+        {loading.length < 75 ? <div className='loading'> LOADING<div style={{color:"green", display:"flex", width:"650px"}}> {loading} </div></div> : ""} 
             <div className="home-slide-track">
-            
-            {/* {count === 0 ? Array(14).fill().map((_,i) => <div style={{width:"240px", height:"120px"}} key={i}></div>) : null} */}
-            
           
-          {loading.length < 72 ? Array(14).fill().map((_,i) => <div style={{width:"240px", height:"120px"}} key={i}></div>) : items.map(item => {
+          {loading.length < 70 ? Array(14).fill().map((_,i) => <div style={{width:"240px", height:"120px"}} key={i}></div>) : items.map(item => {
             let screenshot = item.screenshots !== undefined ? item.screenshots : "Unavailable"
             count += 1
             

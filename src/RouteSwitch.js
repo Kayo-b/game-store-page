@@ -25,7 +25,6 @@ const RouteSwitch = () => {
     const [items, setItems] = useState([])
     const [searchBoxResult, setSearchBoxResult] = useState([]);
     const [isOpen, setIsOpen] = useState(false)
-    const [genresArray, setGenresArray] = useState([])
     const [loading, setLoading] = useState("")
     const [apiList, setApiList] = useState([
                     'https://www.cheapshark.com/api/1.0/deals?storeID=1&pageNumber=0',
@@ -34,10 +33,8 @@ const RouteSwitch = () => {
     async function fetchItems() {
         let allGamesArray = [];
         for(let x = 0; x < apiList.length; x++) {
-            console.log("FETCHINGGGGGGGGGGG")
             const data = await(await fetch(apiList[x])).json();
             setItems(data)
-            console.log(data)
             const updatedData = await Promise.all(
                 data.map(async item => { 
                     if(item.steamAppID != null) {
@@ -70,7 +67,6 @@ const RouteSwitch = () => {
                 
         })
         );
-            console.log(updatedData)
             allGamesArray = allGamesArray.concat(updatedData)
             
         }   
@@ -131,7 +127,7 @@ const RouteSwitch = () => {
          
             <Cart shopCart={shopCart} setCart={setCart} cartDisplay={cartDisplay} setCartDisplay={setCartDisplay} setCartDisplayTrans={setCartDisplayTrans} cartDisplayTrans={cartDisplayTrans} />
             <Routes>
-                <Route path="/" element={<App items={items} setRerender={setRerender} loading={loading} setLoading={setLoading}/>} />
+                <Route path="/" element={<App items={items} loading={loading} setLoading={setLoading}/>} />
                 <Route path="/about" element={<About test={test} />} />
                 <Route path="/deals/" element={
                     <Deals 
@@ -143,7 +139,6 @@ const RouteSwitch = () => {
                     setSearchResult={setSearchResult}
                     cartDisplay={cartDisplay}
                     cartDisplayTrans={cartDisplayTrans}
-                    setRerender={setRerender}
                     />} />
                 <Route path="/deals/:id" element={<Info />} />
                

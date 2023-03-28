@@ -7,7 +7,7 @@ import fromsoftware from '../svg/fromsoftware_logo.png'
 const About = ({test}) => {
     return(
         <div className="about">
-            <div style={{paddingLeft:"40px", display:"flex", justifyContent:"center", flexDirection:"column", fontSize:"small"}}>
+            <div style={{paddingLeft:"40px", display:"flex", justifyContent:"flexCenter", flexDirection:"column", fontSize:"small", alignItems:"center"}}>
             <p>This website was created as a learning project and is intended for educational purposes only.</p> 
             <p>The content and information presented on this site should not be considered as having any commercial validity.</p>
             
