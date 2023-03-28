@@ -1,0 +1,28 @@
+{
+  "files": {
+    "main.css": "/game-store-page/static/css/main.7492b2dd.css",
+    "main.js": "/game-store-page/static/js/main.5bdfed8b.js",
+    "static/js/787.5616bb95.chunk.js": "/game-store-page/static/js/787.5616bb95.chunk.js",
+    "static/media/bonfire-manual-final-ver.gif": "/game-store-page/static/media/bonfire-manual-final-ver.bfff241d748202419119.gif",
+    "static/media/darksouls_knight_no_background_crop1.png": "/game-store-page/static/media/darksouls_knight_no_background_crop1.bc6c5b2ac74b2f32ab1c.png",
+    "static/media/midjourney.gif": "/game-store-page/static/media/midjourney.bf1ddb33d635e96da886.gif",
+    "static/media/steam.png": "/game-store-page/static/media/steam.50a0d169e50342b7f01a.png",
+    "static/media/OptimusPrincepsSemiBold.ttf": "/game-store-page/static/media/OptimusPrincepsSemiBold.69061516ffcdb2039c7f.ttf",
+    "static/media/OptimusPrinceps.ttf": "/game-store-page/static/media/OptimusPrinceps.20e6750830b534d901f0.ttf",
+    "static/media/cheapshark_logo_text.webp": "/game-store-page/static/media/cheapshark_logo_text.1a4f16193c1b237b78ea.webp",
+    "static/media/fromsoftware_logo.png": "/game-store-page/static/media/fromsoftware_logo.df43135b06ad59618d72.png",
+    "static/media/gog.svg": "/game-store-page/static/media/gog.578da090f1f624d37737.svg",
+    "static/media/steam.svg": "/game-store-page/static/media/steam.2d195e93348f338bb06a.svg",
+    "static/media/logo.svg": "/game-store-page/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
+    "static/media/stem.svg": "/game-store-page/static/media/stem.7761d4fe131169e9095f.svg",
+    "static/media/search-svgrepo-com.svg": "/game-store-page/static/media/search-svgrepo-com.f7a26ab2c1e6ae877b07.svg",
+    "index.html": "/game-store-page/index.html",
+    "main.7492b2dd.css.map": "/game-store-page/static/css/main.7492b2dd.css.map",
+    "main.5bdfed8b.js.map": "/game-store-page/static/js/main.5bdfed8b.js.map",
+    "787.5616bb95.chunk.js.map": "/game-store-page/static/js/787.5616bb95.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.7492b2dd.css",
+    "static/js/main.5bdfed8b.js"
+  ]
+}
