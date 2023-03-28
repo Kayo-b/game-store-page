@@ -1,5 +1,4 @@
 # Game Store Page
-------------------------------------------
 
 ##### Game store page inspired by the Steam's store design but with a more traditional e-commerce layout.
 
@@ -33,7 +32,7 @@ This project allowed me to effectively apply most of the React concepts that Iâ€
 Handling all the async functions and making sure the values would be updated during render was challenging at times since this is my second time using an API and my first time using nested APIs inside a loop that needed to be within a `Promise.all()` method so that all fetches would be synced. 
 I also learned a great deal about CSS during this project, mainly on the animation side of things using `@keyframes`.
 
-![preview](./src/game-store-rec2.gif)
+![preview](./src/game-store-rec3.gif)
 
 
 #### Possible future implementations:
