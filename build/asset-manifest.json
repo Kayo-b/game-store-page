@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/game-store-page/static/css/main.168e01a7.css",
+    "main.css": "/game-store-page/static/css/main.c24fd30a.css",
     "main.js": "/game-store-page/static/js/main.3048320d.js",
     "static/js/787.5616bb95.chunk.js": "/game-store-page/static/js/787.5616bb95.chunk.js",
     "static/media/bonfire-manual-final-ver.gif": "/game-store-page/static/media/bonfire-manual-final-ver.bfff241d748202419119.gif",
@@ -17,12 +17,12 @@
     "static/media/stem.svg": "/game-store-page/static/media/stem.7761d4fe131169e9095f.svg",
     "static/media/search-svgrepo-com.svg": "/game-store-page/static/media/search-svgrepo-com.f7a26ab2c1e6ae877b07.svg",
     "index.html": "/game-store-page/index.html",
-    "main.168e01a7.css.map": "/game-store-page/static/css/main.168e01a7.css.map",
+    "main.c24fd30a.css.map": "/game-store-page/static/css/main.c24fd30a.css.map",
     "main.3048320d.js.map": "/game-store-page/static/js/main.3048320d.js.map",
     "787.5616bb95.chunk.js.map": "/game-store-page/static/js/787.5616bb95.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.168e01a7.css",
+    "static/css/main.c24fd30a.css",
     "static/js/main.3048320d.js"
   ]
 }
