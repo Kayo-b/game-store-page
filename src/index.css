@@ -545,6 +545,7 @@ nav {
   background-color: rgba(0, 0, 0, 0.416);
   padding: 0px;
   z-index: 2;
+  margin-top: -51px;
 }
 
 .item-title-cart {
