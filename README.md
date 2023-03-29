@@ -38,6 +38,7 @@ I also learned a great deal about CSS during this project, mainly on the animati
 #### Possible future implementations:
 
 - Filter by value and store;
+- Improve fetching and mounting speed overall;
 - Add a function to fetch more deals and allow the user to select which store he wants to fetch data from;
 - Integrate another API to list free games available online.
 

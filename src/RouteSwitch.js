@@ -127,7 +127,7 @@ const RouteSwitch = () => {
          
             <Cart shopCart={shopCart} setCart={setCart} cartDisplay={cartDisplay} setCartDisplay={setCartDisplay} setCartDisplayTrans={setCartDisplayTrans} cartDisplayTrans={cartDisplayTrans} />
             <Routes>
-                <Route path="/" element={<App items={items} loading={loading} setLoading={setLoading}/>} />
+                <Route path="/game-store-page/" element={<App items={items} loading={loading} setLoading={setLoading}/>} />
                 <Route path="/about" element={<About test={test} />} />
                 <Route path="/deals/" element={
                     <Deals 

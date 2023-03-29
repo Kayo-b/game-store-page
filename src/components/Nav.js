@@ -49,7 +49,7 @@ const Nav = ({setCart, shopCart, cartDisplay, setCartDisplay, cartDisplayTrans, 
         <nav>
             <div className="store-logo"><span style={{fontSize:'medium', color:'rgb(183, 193, 202)'}}>stem</span></div>
              <ul className='nav-links' >
-                <Link to='/' style={{textDecoration:'none'}}>
+                <Link to='/game-store-page/' style={{textDecoration:'none'}}>
                     <li>HOME</li>    
                 </Link>
                 <Link to='/deals' style={{textDecoration:'none'}}>
