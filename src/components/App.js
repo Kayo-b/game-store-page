@@ -11,7 +11,7 @@ function App({items, loading, setLoading}) {
   useEffect(() => {
     const loadingFunc = () => {
       for(let x = 1; x < 76; x++) {
-        setTimeout(() => {setLoading(prevLoading => prevLoading + "▮")}, x * 260)
+        setTimeout(() => {setLoading(prevLoading => prevLoading + "▮")}, x * 200)
       }
     }
     loadingFunc()

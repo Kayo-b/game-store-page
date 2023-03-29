@@ -61,6 +61,8 @@ code {
     border: 1px solid black;
     background-color: #2f4f90f4;
     padding-right: 25px;
+    padding-left: 6px;
+    padding-top: 6px;
     z-index: 2;
   }
   .shopCart > div > p {
