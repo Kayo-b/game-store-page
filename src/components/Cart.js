@@ -59,7 +59,7 @@ const Cart = ({shopCart, setCart, cartDisplay, setCartDisplay, cartDisplayTrans,
             <div className='shopCartContainer'>
         
             <div className='shopCart' style={{transform: cartDisplayTrans}}>
-                <button className="cart-buttons" style={{paddingTop:"1px", paddingBottom: "0px", border: "1px solid #171a21"}} onClick={() => {setCartDisplay('hidden'); setCartDisplayTrans('translateX(100%)')}}>X</button>
+                <button className="cart-buttons" onClick={() => {setCartDisplay('hidden'); setCartDisplayTrans('translateX(100%)')}}>X</button>
                 <h4>SHOPPING CART</h4>
                 <ul className="cartList">{shopCart.map(item => 
                     <li key={item.dealID + shopCart.indexOf(item)} className="button-list">

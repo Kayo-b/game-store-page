@@ -72,7 +72,7 @@ const RouteSwitch = () => {
         }   
         
         setItems(allGamesArray);
-        const message = items.length > 0 ? `${items.length} deals found` : 'No deals found';
+        const message = allGamesArray.length > 0 ? `${items.length} deals found` : 'No deals found';
         setMessage(message);
     }
     useEffect(() => {
