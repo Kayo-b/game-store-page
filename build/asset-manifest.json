@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/game-store-page/static/css/main.c24fd30a.css",
-    "main.js": "/game-store-page/static/js/main.3048320d.js",
+    "main.css": "/game-store-page/static/css/main.8ac5223a.css",
+    "main.js": "/game-store-page/static/js/main.e96a6950.js",
     "static/js/787.5616bb95.chunk.js": "/game-store-page/static/js/787.5616bb95.chunk.js",
     "static/media/bonfire-manual-final-ver.gif": "/game-store-page/static/media/bonfire-manual-final-ver.bfff241d748202419119.gif",
     "static/media/darksouls_knight_no_background_crop1.png": "/game-store-page/static/media/darksouls_knight_no_background_crop1.bc6c5b2ac74b2f32ab1c.png",
@@ -17,12 +17,12 @@
     "static/media/stem.svg": "/game-store-page/static/media/stem.7761d4fe131169e9095f.svg",
     "static/media/search-svgrepo-com.svg": "/game-store-page/static/media/search-svgrepo-com.f7a26ab2c1e6ae877b07.svg",
     "index.html": "/game-store-page/index.html",
-    "main.c24fd30a.css.map": "/game-store-page/static/css/main.c24fd30a.css.map",
-    "main.3048320d.js.map": "/game-store-page/static/js/main.3048320d.js.map",
+    "main.8ac5223a.css.map": "/game-store-page/static/css/main.8ac5223a.css.map",
+    "main.e96a6950.js.map": "/game-store-page/static/js/main.e96a6950.js.map",
     "787.5616bb95.chunk.js.map": "/game-store-page/static/js/787.5616bb95.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.c24fd30a.css",
-    "static/js/main.3048320d.js"
+    "static/css/main.8ac5223a.css",
+    "static/js/main.e96a6950.js"
   ]
 }
