@@ -8,7 +8,7 @@
 
     - Displays an animated carousel with multiple images fetched from Steam’s API;
     - Shows a loading animation on the first mount while the images are being fetched;
-    - Features Darksouls artwork and text animation to fill the empty space.
+    - Features Dark Souls/Midjourney artwork and text animation to fill the empty space.
 
 - Deals/Store:
 
