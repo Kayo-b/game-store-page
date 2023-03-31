@@ -22,7 +22,6 @@ const Info = () => {
         setItem(item)
     }   
 
-    console.log(item)
     return( 
         <div className="info"> 
             <h3>{item.name_original}</h3>
