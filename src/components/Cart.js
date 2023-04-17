@@ -123,7 +123,7 @@ const Cart = ({
                 color: "black",
                 fontSize: "medium",
                 display: "block",
-                marginRight: "10px",
+                marginRight: "23px",
               }}
             >
               <p style={{ height: "7px", textAlign: "right" }}>
