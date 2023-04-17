@@ -1,6 +1,6 @@
 # Game Store Page
 
-##### Game store page inspired by the Steam's store design but with a more traditional e-commerce layout.
+##### This game store page is inspired by the design of the Steam Store, but it features a more traditional e-commerce layout.
 
 #### Features:
 
