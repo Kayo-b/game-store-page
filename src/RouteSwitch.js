@@ -40,7 +40,7 @@ const RouteSwitch = () => {
             let screenShotsArray = [];
             try {
               let steamApiFetch = await fetch(
-                `https://store.steampowered.com/api/appdetails?appids=${item.steamAppID}`
+                `https://api.allorigins.win/get?url=${encodeURIComponent(`https://store.steampowered.com/api/appdetails?appids=${item.steamAppID}`)}`
               );
               if (!steamApiFetch.ok) {
                 throw new Error(
@@ -48,16 +48,17 @@ const RouteSwitch = () => {
                 );
               }
               let fetchResult = await steamApiFetch.json();
-              item.genres = fetchResult[item.steamAppID].data.genres;
+              const steamData = JSON.parse(fetchResult.contents);
+              item.genres = steamData[item.steamAppID].data.genres;
               item.short_description =
-                fetchResult[item.steamAppID].data.short_description;
+                steamData[item.steamAppID].data.short_description;
               for (let i = 0; i < 4; i++) {
                 let random = randomArray(
                   [],
-                  fetchResult[item.steamAppID].data.screenshots.length
+                  steamData[item.steamAppID].data.screenshots.length
                 );
                 screenShotsArray.push(
-                  fetchResult[item.steamAppID].data.screenshots[random[i]]
+                  steamData[item.steamAppID].data.screenshots[random[i]]
                     .path_thumbnail
                 );
               }

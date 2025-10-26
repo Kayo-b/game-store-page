@@ -1,5 +1,5 @@
-import logo from "/home/kayo-b/the_odin_project/game-store-page/src/logo.svg";
-import "/home/kayo-b/the_odin_project/game-store-page/src/App.css";
+import logo from "../logo.svg";
+import "../App.css";
 import { Link } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import midjourney from "../svg/midjourney.gif";
