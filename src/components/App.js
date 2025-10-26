@@ -37,41 +37,46 @@ function App({ items, loading, setLoading }) {
           <div className="home-slide-track">
             {loading.length < 73
               ? ""
-              : items.map((item) => {
-                  let screenshot =
-                    item.screenshots !== undefined
-                      ? item.screenshots
-                      : "Unavailable";
-                  count += 1;
-
-                  if (screenshot !== "Unavailable" && count < 17) {
-                    return (
-                      <div className="slides-container">
-                        <img
-                          className="home-carousel-slide"
-                          alt={`${screenshot}`}
-                          src={screenshot[0]}
-                        ></img>
-                        <img
-                          className="home-carousel-slide"
-                          alt={`${screenshot}`}
-                          src={screenshot[1]}
-                        ></img>
-                        <img
-                          className="home-carousel-slide"
-                          alt={`${screenshot}`}
-                          src={screenshot[2]}
-                        ></img>
-                        <img
-                          className="home-carousel-slide"
-                          alt={`${screenshot}`}
-                          src={screenshot[3]}
-                        ></img>
-                      </div>
-                    );
+              : (() => {
+                  const validItems = items.filter(item => item.screenshots !== undefined && item.screenshots !== "Unavailable");
+                  const carouselSlides = [];
+                  
+                  if (validItems.length > 0) {
+                    // Keep looping until we have 17 slides, repeating items if necessary
+                    for (let i = 0; i < 17; i++) {
+                      const item = validItems[i % validItems.length]; // Cycle through available items
+                      const screenshot = item.screenshots;
+                      
+                      carouselSlides.push(
+                        <div key={i} className="slides-container">
+                          <img
+                            className="home-carousel-slide"
+                            alt={`screenshot-${i}-0`}
+                            src={screenshot[0]}
+                          />
+                          <img
+                            className="home-carousel-slide"
+                            alt={`screenshot-${i}-1`}
+                            src={screenshot[1]}
+                          />
+                          <img
+                            className="home-carousel-slide"
+                            alt={`screenshot-${i}-2`}
+                            src={screenshot[2]}
+                          />
+                          <img
+                            className="home-carousel-slide"
+                            alt={`screenshot-${i}-3`}
+                            src={screenshot[3]}
+                          />
+                        </div>
+                      );
+                    }
                   }
-                })}
-
+                  
+                  return carouselSlides;
+                })()
+          }
             {/* {items.map(item => {
             let screenshot = item.screenshots !== undefined ? item.screenshots : "Unavailable"
             count += 1
