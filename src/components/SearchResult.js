@@ -59,7 +59,7 @@ const SearchResult = ({
             );
           }
           if (
-            item.thumb.includes("https://cdn.cloudflare.steamstatic.com/steam")
+            item.thumb.includes("steamstatic")
           ) {
             return (
               <div className="result-box-container">
