@@ -1,11 +1,11 @@
 {
   "files": {
-    "main.css": "/game-store-page/static/css/main.8ac5223a.css",
-    "main.js": "/game-store-page/static/js/main.895ca35d.js",
+    "main.css": "/game-store-page/static/css/main.e4cad881.css",
+    "main.js": "/game-store-page/static/js/main.d0ab1268.js",
     "static/js/787.5616bb95.chunk.js": "/game-store-page/static/js/787.5616bb95.chunk.js",
     "static/media/bonfire-manual-final-ver.gif": "/game-store-page/static/media/bonfire-manual-final-ver.bfff241d748202419119.gif",
-    "static/media/darksouls_knight_no_background_crop1.png": "/game-store-page/static/media/darksouls_knight_no_background_crop1.bc6c5b2ac74b2f32ab1c.png",
     "static/media/midjourney.gif": "/game-store-page/static/media/midjourney.bf1ddb33d635e96da886.gif",
+    "static/media/knight.png": "/game-store-page/static/media/knight.81b27289d398850d61b2.png",
     "static/media/steam.png": "/game-store-page/static/media/steam.50a0d169e50342b7f01a.png",
     "static/media/OptimusPrincepsSemiBold.ttf": "/game-store-page/static/media/OptimusPrincepsSemiBold.69061516ffcdb2039c7f.ttf",
     "static/media/OptimusPrinceps.ttf": "/game-store-page/static/media/OptimusPrinceps.20e6750830b534d901f0.ttf",
@@ -17,12 +17,12 @@
     "static/media/stem.svg": "/game-store-page/static/media/stem.7761d4fe131169e9095f.svg",
     "static/media/search-svgrepo-com.svg": "/game-store-page/static/media/search-svgrepo-com.f7a26ab2c1e6ae877b07.svg",
     "index.html": "/game-store-page/index.html",
-    "main.8ac5223a.css.map": "/game-store-page/static/css/main.8ac5223a.css.map",
-    "main.895ca35d.js.map": "/game-store-page/static/js/main.895ca35d.js.map",
+    "main.e4cad881.css.map": "/game-store-page/static/css/main.e4cad881.css.map",
+    "main.d0ab1268.js.map": "/game-store-page/static/js/main.d0ab1268.js.map",
     "787.5616bb95.chunk.js.map": "/game-store-page/static/js/787.5616bb95.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.8ac5223a.css",
-    "static/js/main.895ca35d.js"
+    "static/css/main.e4cad881.css",
+    "static/js/main.d0ab1268.js"
   ]
 }
