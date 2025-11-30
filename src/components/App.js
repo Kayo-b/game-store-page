@@ -93,10 +93,6 @@ function App({ items, loading, setLoading }) {
 
           })} */}
           </div>
-          <div className="home-background-img-container">
-            <div className="home-deals-link-container">
-              <div className="home-background-img"></div>
-            </div>
             <Link
               to="/deals"
               style={{
@@ -136,8 +132,10 @@ function App({ items, loading, setLoading }) {
                   </span>
                 </div>
               )}
-
-              <div className="bonfire"></div>
+              {/* <div className="home-background-img-container">
+              </div> */}
+                  <div className="home-background-img"></div>
+              <div className="bonfire">
             </div>
           </div>
         </div>
