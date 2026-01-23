@@ -35,7 +35,15 @@ code {
     monospace;
 }
 
-@media only screen and (max-width: 480px) {
+@media only screen and (max-width: 800px) {
+
+  .bonfire {
+    display: none;
+  }
+
+  .phrase-container {
+    display: nono;
+  }
 
   .bonfire-container {
       display: none;
@@ -256,12 +264,13 @@ code {
   .bonfire-container{
     display: flex;
     flex-direction: row;
-    justify-content: end;
-    align-items: end;
+    justify-content: center;
+    align-items: center;
     padding-top: 0px;
-    margin-left: 0px;
-    margin-right: 0px;
-    width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 350px;
+    width: 70%;
   }
   
   .phrase-container {
@@ -426,15 +435,15 @@ code {
 .bonfire-container{
   display: flex;
   flex-direction: column;
-  justify-content: start;
-  align-items: end;
+  justify-content: center;
+  align-items: center;
   padding-top: 0px;
-  /* padding-right: 10px; */
-  /* margin-right: 0px;  */
-  max-width: 350px;
+  max-width: 300px;
+  width: 70%;
   position: absolute;
-  /* right: 0; */
-  /* overflow: hidden; */
+  transform: translateX(-50%);
+  top: 20vmin;
+  overflow: visible;
 }
 
 .phrase-container {
